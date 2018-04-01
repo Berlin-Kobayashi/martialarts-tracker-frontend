@@ -1,11 +1,14 @@
-.PHONY: build run client
+.PHONY: install build run client
 default: run ;
 
+install:
+	@docker run -v `pwd`:/usr/src/app --rm node:8.11-onbuild /bin/bash -c "npm install && cd client/ && npm install"
+
 build:
-	@docker run -v `pwd`:/usr/src/app --rm --name npm node:6.5-onbuild npm install
+	@docker run -v `pwd`:/usr/src/app --rm node:8.11-onbuild npm run-script build
 
 run:
-	@docker run -p 8989:80 -v `pwd`:/usr/share/nginx/html --rm --name nginx nginx:latest
+	@docker run --network martialarts-tracker -p 8989:80 -v `pwd`/public:/usr/share/nginx/html --rm --name nginx nginx:latest
 
 client:
 	@docker run --network martialarts-tracker -v `pwd`/client:/out --rm swaggerapi/swagger-codegen-cli generate -l javascript -i "http://martialartstracker_api_1/meta/swagger" -o /out

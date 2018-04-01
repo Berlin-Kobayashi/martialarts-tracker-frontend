@@ -4,11 +4,15 @@
   "description": "",
   "main": "public/index.html",
   "dependencies": {
-    "bootstrap": "^4.0.0"
+    "bootstrap": "^4.0.0",
+    "browserify": "^16.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/browserify src/main.js -o public/bundle.js"
   },
   "repository": {
     "type": "git",
