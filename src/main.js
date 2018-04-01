@@ -12,4 +12,14 @@ var callback = function(error, data, response) {
         console.log(response);
     }
 };
-api.metaSwaggerGet(callback);
+
+technique = {
+    "id": "bc5ac88f-3d3f-4a1a-83b2-92f847eb6ae6",
+    "data": {
+        "kind": "Language",
+        "name": "Go",
+        "description": "compiled, concurrent, imperative, structured"
+    }
+};
+
+api.techniquePost(technique,callback);

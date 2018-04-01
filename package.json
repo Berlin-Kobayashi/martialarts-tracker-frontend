@@ -4,10 +4,10 @@
   "description": "",
   "main": "public/index.html",
   "dependencies": {
-    "bootstrap": "^4.0.0",
     "browserify": "^16.1.1",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.1"
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "material-ui": "^0.20.0"
   },
   "devDependencies": {},
   "scripts": {
