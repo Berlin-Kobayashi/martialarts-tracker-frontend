@@ -119,32 +119,32 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MartialartsTracker.DefaultApi* | [**exerciseExerciseIdDelete**](docs/DefaultApi.md#exerciseExerciseIdDelete) | **DELETE** /exercise/{exerciseId} | 
 *MartialartsTracker.DefaultApi* | [**exerciseExerciseIdGet**](docs/DefaultApi.md#exerciseExerciseIdGet) | **GET** /exercise/{exerciseId} | 
-*MartialartsTracker.DefaultApi* | [**exerciseExerciseIdPost**](docs/DefaultApi.md#exerciseExerciseIdPost) | **POST** /exercise/{exerciseId} | 
 *MartialartsTracker.DefaultApi* | [**exerciseExerciseIdPut**](docs/DefaultApi.md#exerciseExerciseIdPut) | **PUT** /exercise/{exerciseId} | 
 *MartialartsTracker.DefaultApi* | [**exerciseExpandExerciseIdGet**](docs/DefaultApi.md#exerciseExpandExerciseIdGet) | **GET** /exercise/expand/{exerciseId} | 
 *MartialartsTracker.DefaultApi* | [**exerciseGet**](docs/DefaultApi.md#exerciseGet) | **GET** /exercise | 
+*MartialartsTracker.DefaultApi* | [**exercisePost**](docs/DefaultApi.md#exercisePost) | **POST** /exercise | 
 *MartialartsTracker.DefaultApi* | [**exerciseReferencedByExerciseIdGet**](docs/DefaultApi.md#exerciseReferencedByExerciseIdGet) | **GET** /exercise/referenced-by/{exerciseId} | 
 *MartialartsTracker.DefaultApi* | [**metaSwaggerGet**](docs/DefaultApi.md#metaSwaggerGet) | **GET** /meta/swagger | 
 *MartialartsTracker.DefaultApi* | [**methodExpandMethodIdGet**](docs/DefaultApi.md#methodExpandMethodIdGet) | **GET** /method/expand/{methodId} | 
 *MartialartsTracker.DefaultApi* | [**methodGet**](docs/DefaultApi.md#methodGet) | **GET** /method | 
 *MartialartsTracker.DefaultApi* | [**methodMethodIdDelete**](docs/DefaultApi.md#methodMethodIdDelete) | **DELETE** /method/{methodId} | 
 *MartialartsTracker.DefaultApi* | [**methodMethodIdGet**](docs/DefaultApi.md#methodMethodIdGet) | **GET** /method/{methodId} | 
-*MartialartsTracker.DefaultApi* | [**methodMethodIdPost**](docs/DefaultApi.md#methodMethodIdPost) | **POST** /method/{methodId} | 
 *MartialartsTracker.DefaultApi* | [**methodMethodIdPut**](docs/DefaultApi.md#methodMethodIdPut) | **PUT** /method/{methodId} | 
+*MartialartsTracker.DefaultApi* | [**methodPost**](docs/DefaultApi.md#methodPost) | **POST** /method | 
 *MartialartsTracker.DefaultApi* | [**methodReferencedByMethodIdGet**](docs/DefaultApi.md#methodReferencedByMethodIdGet) | **GET** /method/referenced-by/{methodId} | 
 *MartialartsTracker.DefaultApi* | [**techniqueExpandTechniqueIdGet**](docs/DefaultApi.md#techniqueExpandTechniqueIdGet) | **GET** /technique/expand/{techniqueId} | 
 *MartialartsTracker.DefaultApi* | [**techniqueGet**](docs/DefaultApi.md#techniqueGet) | **GET** /technique | 
+*MartialartsTracker.DefaultApi* | [**techniquePost**](docs/DefaultApi.md#techniquePost) | **POST** /technique | 
 *MartialartsTracker.DefaultApi* | [**techniqueReferencedByTechniqueIdGet**](docs/DefaultApi.md#techniqueReferencedByTechniqueIdGet) | **GET** /technique/referenced-by/{techniqueId} | 
 *MartialartsTracker.DefaultApi* | [**techniqueTechniqueIdDelete**](docs/DefaultApi.md#techniqueTechniqueIdDelete) | **DELETE** /technique/{techniqueId} | 
 *MartialartsTracker.DefaultApi* | [**techniqueTechniqueIdGet**](docs/DefaultApi.md#techniqueTechniqueIdGet) | **GET** /technique/{techniqueId} | 
-*MartialartsTracker.DefaultApi* | [**techniqueTechniqueIdPost**](docs/DefaultApi.md#techniqueTechniqueIdPost) | **POST** /technique/{techniqueId} | 
 *MartialartsTracker.DefaultApi* | [**techniqueTechniqueIdPut**](docs/DefaultApi.md#techniqueTechniqueIdPut) | **PUT** /technique/{techniqueId} | 
 *MartialartsTracker.DefaultApi* | [**trainingunitExpandTrainingunitIdGet**](docs/DefaultApi.md#trainingunitExpandTrainingunitIdGet) | **GET** /trainingunit/expand/{trainingunitId} | 
 *MartialartsTracker.DefaultApi* | [**trainingunitGet**](docs/DefaultApi.md#trainingunitGet) | **GET** /trainingunit | 
+*MartialartsTracker.DefaultApi* | [**trainingunitPost**](docs/DefaultApi.md#trainingunitPost) | **POST** /trainingunit | 
 *MartialartsTracker.DefaultApi* | [**trainingunitReferencedByTrainingunitIdGet**](docs/DefaultApi.md#trainingunitReferencedByTrainingunitIdGet) | **GET** /trainingunit/referenced-by/{trainingunitId} | 
 *MartialartsTracker.DefaultApi* | [**trainingunitTrainingunitIdDelete**](docs/DefaultApi.md#trainingunitTrainingunitIdDelete) | **DELETE** /trainingunit/{trainingunitId} | 
 *MartialartsTracker.DefaultApi* | [**trainingunitTrainingunitIdGet**](docs/DefaultApi.md#trainingunitTrainingunitIdGet) | **GET** /trainingunit/{trainingunitId} | 
-*MartialartsTracker.DefaultApi* | [**trainingunitTrainingunitIdPost**](docs/DefaultApi.md#trainingunitTrainingunitIdPost) | **POST** /trainingunit/{trainingunitId} | 
 *MartialartsTracker.DefaultApi* | [**trainingunitTrainingunitIdPut**](docs/DefaultApi.md#trainingunitTrainingunitIdPut) | **PUT** /trainingunit/{trainingunitId} | 
 
 

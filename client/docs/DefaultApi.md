@@ -6,32 +6,32 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**exerciseExerciseIdDelete**](DefaultApi.md#exerciseExerciseIdDelete) | **DELETE** /exercise/{exerciseId} | 
 [**exerciseExerciseIdGet**](DefaultApi.md#exerciseExerciseIdGet) | **GET** /exercise/{exerciseId} | 
-[**exerciseExerciseIdPost**](DefaultApi.md#exerciseExerciseIdPost) | **POST** /exercise/{exerciseId} | 
 [**exerciseExerciseIdPut**](DefaultApi.md#exerciseExerciseIdPut) | **PUT** /exercise/{exerciseId} | 
 [**exerciseExpandExerciseIdGet**](DefaultApi.md#exerciseExpandExerciseIdGet) | **GET** /exercise/expand/{exerciseId} | 
 [**exerciseGet**](DefaultApi.md#exerciseGet) | **GET** /exercise | 
+[**exercisePost**](DefaultApi.md#exercisePost) | **POST** /exercise | 
 [**exerciseReferencedByExerciseIdGet**](DefaultApi.md#exerciseReferencedByExerciseIdGet) | **GET** /exercise/referenced-by/{exerciseId} | 
 [**metaSwaggerGet**](DefaultApi.md#metaSwaggerGet) | **GET** /meta/swagger | 
 [**methodExpandMethodIdGet**](DefaultApi.md#methodExpandMethodIdGet) | **GET** /method/expand/{methodId} | 
 [**methodGet**](DefaultApi.md#methodGet) | **GET** /method | 
 [**methodMethodIdDelete**](DefaultApi.md#methodMethodIdDelete) | **DELETE** /method/{methodId} | 
 [**methodMethodIdGet**](DefaultApi.md#methodMethodIdGet) | **GET** /method/{methodId} | 
-[**methodMethodIdPost**](DefaultApi.md#methodMethodIdPost) | **POST** /method/{methodId} | 
 [**methodMethodIdPut**](DefaultApi.md#methodMethodIdPut) | **PUT** /method/{methodId} | 
+[**methodPost**](DefaultApi.md#methodPost) | **POST** /method | 
 [**methodReferencedByMethodIdGet**](DefaultApi.md#methodReferencedByMethodIdGet) | **GET** /method/referenced-by/{methodId} | 
 [**techniqueExpandTechniqueIdGet**](DefaultApi.md#techniqueExpandTechniqueIdGet) | **GET** /technique/expand/{techniqueId} | 
 [**techniqueGet**](DefaultApi.md#techniqueGet) | **GET** /technique | 
+[**techniquePost**](DefaultApi.md#techniquePost) | **POST** /technique | 
 [**techniqueReferencedByTechniqueIdGet**](DefaultApi.md#techniqueReferencedByTechniqueIdGet) | **GET** /technique/referenced-by/{techniqueId} | 
 [**techniqueTechniqueIdDelete**](DefaultApi.md#techniqueTechniqueIdDelete) | **DELETE** /technique/{techniqueId} | 
 [**techniqueTechniqueIdGet**](DefaultApi.md#techniqueTechniqueIdGet) | **GET** /technique/{techniqueId} | 
-[**techniqueTechniqueIdPost**](DefaultApi.md#techniqueTechniqueIdPost) | **POST** /technique/{techniqueId} | 
 [**techniqueTechniqueIdPut**](DefaultApi.md#techniqueTechniqueIdPut) | **PUT** /technique/{techniqueId} | 
 [**trainingunitExpandTrainingunitIdGet**](DefaultApi.md#trainingunitExpandTrainingunitIdGet) | **GET** /trainingunit/expand/{trainingunitId} | 
 [**trainingunitGet**](DefaultApi.md#trainingunitGet) | **GET** /trainingunit | 
+[**trainingunitPost**](DefaultApi.md#trainingunitPost) | **POST** /trainingunit | 
 [**trainingunitReferencedByTrainingunitIdGet**](DefaultApi.md#trainingunitReferencedByTrainingunitIdGet) | **GET** /trainingunit/referenced-by/{trainingunitId} | 
 [**trainingunitTrainingunitIdDelete**](DefaultApi.md#trainingunitTrainingunitIdDelete) | **DELETE** /trainingunit/{trainingunitId} | 
 [**trainingunitTrainingunitIdGet**](DefaultApi.md#trainingunitTrainingunitIdGet) | **GET** /trainingunit/{trainingunitId} | 
-[**trainingunitTrainingunitIdPost**](DefaultApi.md#trainingunitTrainingunitIdPost) | **POST** /trainingunit/{trainingunitId} | 
 [**trainingunitTrainingunitIdPut**](DefaultApi.md#trainingunitTrainingunitIdPut) | **PUT** /trainingunit/{trainingunitId} | 
 
 
@@ -109,53 +109,6 @@ apiInstance.exerciseExerciseIdGet(exerciseId, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **exerciseId** | **String**| ID of the exercise | 
-
-### Return type
-
-[**Exercise**](Exercise.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="exerciseExerciseIdPost"></a>
-# **exerciseExerciseIdPost**
-> Exercise exerciseExerciseIdPost(exerciseIdbody)
-
-
-
-### Example
-```javascript
-var MartialartsTracker = require('martialarts_tracker');
-
-var apiInstance = new MartialartsTracker.DefaultApi();
-
-var exerciseId = "exerciseId_example"; // String | ID of the exercise
-
-var body = new MartialartsTracker.Exercise(); // Exercise | ID of the exercise
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.exerciseExerciseIdPost(exerciseIdbody, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **exerciseId** | **String**| ID of the exercise | 
- **body** | [**Exercise**](Exercise.md)| ID of the exercise | 
 
 ### Return type
 
@@ -289,6 +242,50 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**[Exercise]**](Exercise.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="exercisePost"></a>
+# **exercisePost**
+> Exercise exercisePost(body)
+
+
+
+### Example
+```javascript
+var MartialartsTracker = require('martialarts_tracker');
+
+var apiInstance = new MartialartsTracker.DefaultApi();
+
+var body = new MartialartsTracker.Exercise(); // Exercise | ID of the exercise
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.exercisePost(body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Exercise**](Exercise.md)| ID of the exercise | 
+
+### Return type
+
+[**Exercise**](Exercise.md)
 
 ### Authorization
 
@@ -551,53 +548,6 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="methodMethodIdPost"></a>
-# **methodMethodIdPost**
-> Method methodMethodIdPost(methodIdbody)
-
-
-
-### Example
-```javascript
-var MartialartsTracker = require('martialarts_tracker');
-
-var apiInstance = new MartialartsTracker.DefaultApi();
-
-var methodId = "methodId_example"; // String | ID of the method
-
-var body = new MartialartsTracker.Method(); // Method | ID of the method
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.methodMethodIdPost(methodIdbody, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **methodId** | **String**| ID of the method | 
- **body** | [**Method**](Method.md)| ID of the method | 
-
-### Return type
-
-[**Method**](Method.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
 <a name="methodMethodIdPut"></a>
 # **methodMethodIdPut**
 > Method methodMethodIdPut(methodIdbody)
@@ -630,6 +580,50 @@ apiInstance.methodMethodIdPut(methodIdbody, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **methodId** | **String**| ID of the method | 
+ **body** | [**Method**](Method.md)| ID of the method | 
+
+### Return type
+
+[**Method**](Method.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="methodPost"></a>
+# **methodPost**
+> Method methodPost(body)
+
+
+
+### Example
+```javascript
+var MartialartsTracker = require('martialarts_tracker');
+
+var apiInstance = new MartialartsTracker.DefaultApi();
+
+var body = new MartialartsTracker.Method(); // Method | ID of the method
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.methodPost(body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **body** | [**Method**](Method.md)| ID of the method | 
 
 ### Return type
@@ -771,6 +765,50 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+<a name="techniquePost"></a>
+# **techniquePost**
+> Technique techniquePost(body)
+
+
+
+### Example
+```javascript
+var MartialartsTracker = require('martialarts_tracker');
+
+var apiInstance = new MartialartsTracker.DefaultApi();
+
+var body = new MartialartsTracker.Technique(); // Technique | ID of the technique
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.techniquePost(body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Technique**](Technique.md)| ID of the technique | 
+
+### Return type
+
+[**Technique**](Technique.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
 <a name="techniqueReferencedByTechniqueIdGet"></a>
 # **techniqueReferencedByTechniqueIdGet**
 > TechniqueReferencedBy techniqueReferencedByTechniqueIdGet(techniqueId)
@@ -889,53 +927,6 @@ apiInstance.techniqueTechniqueIdGet(techniqueId, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **techniqueId** | **String**| ID of the technique | 
-
-### Return type
-
-[**Technique**](Technique.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="techniqueTechniqueIdPost"></a>
-# **techniqueTechniqueIdPost**
-> Technique techniqueTechniqueIdPost(techniqueIdbody)
-
-
-
-### Example
-```javascript
-var MartialartsTracker = require('martialarts_tracker');
-
-var apiInstance = new MartialartsTracker.DefaultApi();
-
-var techniqueId = "techniqueId_example"; // String | ID of the technique
-
-var body = new MartialartsTracker.Technique(); // Technique | ID of the technique
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.techniqueTechniqueIdPost(techniqueIdbody, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **techniqueId** | **String**| ID of the technique | 
- **body** | [**Technique**](Technique.md)| ID of the technique | 
 
 ### Return type
 
@@ -1079,6 +1070,50 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+<a name="trainingunitPost"></a>
+# **trainingunitPost**
+> Trainingunit trainingunitPost(body)
+
+
+
+### Example
+```javascript
+var MartialartsTracker = require('martialarts_tracker');
+
+var apiInstance = new MartialartsTracker.DefaultApi();
+
+var body = new MartialartsTracker.Trainingunit(); // Trainingunit | ID of the trainingunit
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.trainingunitPost(body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Trainingunit**](Trainingunit.md)| ID of the trainingunit | 
+
+### Return type
+
+[**Trainingunit**](Trainingunit.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
 <a name="trainingunitReferencedByTrainingunitIdGet"></a>
 # **trainingunitReferencedByTrainingunitIdGet**
 > TrainingunitReferencedBy trainingunitReferencedByTrainingunitIdGet(trainingunitId)
@@ -1197,53 +1232,6 @@ apiInstance.trainingunitTrainingunitIdGet(trainingunitId, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **trainingunitId** | **String**| ID of the trainingunit | 
-
-### Return type
-
-[**Trainingunit**](Trainingunit.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="trainingunitTrainingunitIdPost"></a>
-# **trainingunitTrainingunitIdPost**
-> Trainingunit trainingunitTrainingunitIdPost(trainingunitIdbody)
-
-
-
-### Example
-```javascript
-var MartialartsTracker = require('martialarts_tracker');
-
-var apiInstance = new MartialartsTracker.DefaultApi();
-
-var trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
-
-var body = new MartialartsTracker.Trainingunit(); // Trainingunit | ID of the trainingunit
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.trainingunitTrainingunitIdPost(trainingunitIdbody, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **trainingunitId** | **String**| ID of the trainingunit | 
- **body** | [**Trainingunit**](Trainingunit.md)| ID of the trainingunit | 
 
 ### Return type
 

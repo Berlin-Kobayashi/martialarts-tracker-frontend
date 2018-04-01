@@ -139,58 +139,6 @@
     }
 
     /**
-     * Callback function to receive the result of the exerciseExerciseIdPost operation.
-     * @callback module:api/DefaultApi~exerciseExerciseIdPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Exercise} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} exerciseId ID of the exercise
-     * @param {module:model/Exercise} body ID of the exercise
-     * @param {module:api/DefaultApi~exerciseExerciseIdPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Exercise}
-     */
-    this.exerciseExerciseIdPost = function(exerciseId, body, callback) {
-      var postBody = body;
-
-      // verify the required parameter 'exerciseId' is set
-      if (exerciseId === undefined || exerciseId === null) {
-        throw new Error("Missing the required parameter 'exerciseId' when calling exerciseExerciseIdPost");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling exerciseExerciseIdPost");
-      }
-
-
-      var pathParams = {
-        'exerciseId': exerciseId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = Exercise;
-
-      return this.apiClient.callApi(
-        '/exercise/{exerciseId}', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the exerciseExerciseIdPut operation.
      * @callback module:api/DefaultApi~exerciseExerciseIdPutCallback
      * @param {String} error Error message, if any.
@@ -322,6 +270,51 @@
 
       return this.apiClient.callApi(
         '/exercise', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the exercisePost operation.
+     * @callback module:api/DefaultApi~exercisePostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Exercise} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {module:model/Exercise} body ID of the exercise
+     * @param {module:api/DefaultApi~exercisePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Exercise}
+     */
+    this.exercisePost = function(body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling exercisePost");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = Exercise;
+
+      return this.apiClient.callApi(
+        '/exercise', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -588,58 +581,6 @@
     }
 
     /**
-     * Callback function to receive the result of the methodMethodIdPost operation.
-     * @callback module:api/DefaultApi~methodMethodIdPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Method} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} methodId ID of the method
-     * @param {module:model/Method} body ID of the method
-     * @param {module:api/DefaultApi~methodMethodIdPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Method}
-     */
-    this.methodMethodIdPost = function(methodId, body, callback) {
-      var postBody = body;
-
-      // verify the required parameter 'methodId' is set
-      if (methodId === undefined || methodId === null) {
-        throw new Error("Missing the required parameter 'methodId' when calling methodMethodIdPost");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling methodMethodIdPost");
-      }
-
-
-      var pathParams = {
-        'methodId': methodId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = Method;
-
-      return this.apiClient.callApi(
-        '/method/{methodId}', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the methodMethodIdPut operation.
      * @callback module:api/DefaultApi~methodMethodIdPutCallback
      * @param {String} error Error message, if any.
@@ -686,6 +627,51 @@
 
       return this.apiClient.callApi(
         '/method/{methodId}', 'PUT',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the methodPost operation.
+     * @callback module:api/DefaultApi~methodPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Method} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {module:model/Method} body ID of the method
+     * @param {module:api/DefaultApi~methodPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Method}
+     */
+    this.methodPost = function(body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling methodPost");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = Method;
+
+      return this.apiClient.callApi(
+        '/method', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -817,6 +803,51 @@
 
       return this.apiClient.callApi(
         '/technique', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the techniquePost operation.
+     * @callback module:api/DefaultApi~techniquePostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Technique} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {module:model/Technique} body ID of the technique
+     * @param {module:api/DefaultApi~techniquePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Technique}
+     */
+    this.techniquePost = function(body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling techniquePost");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = Technique;
+
+      return this.apiClient.callApi(
+        '/technique', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -960,58 +991,6 @@
     }
 
     /**
-     * Callback function to receive the result of the techniqueTechniqueIdPost operation.
-     * @callback module:api/DefaultApi~techniqueTechniqueIdPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Technique} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} techniqueId ID of the technique
-     * @param {module:model/Technique} body ID of the technique
-     * @param {module:api/DefaultApi~techniqueTechniqueIdPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Technique}
-     */
-    this.techniqueTechniqueIdPost = function(techniqueId, body, callback) {
-      var postBody = body;
-
-      // verify the required parameter 'techniqueId' is set
-      if (techniqueId === undefined || techniqueId === null) {
-        throw new Error("Missing the required parameter 'techniqueId' when calling techniqueTechniqueIdPost");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling techniqueTechniqueIdPost");
-      }
-
-
-      var pathParams = {
-        'techniqueId': techniqueId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = Technique;
-
-      return this.apiClient.callApi(
-        '/technique/{techniqueId}', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the techniqueTechniqueIdPut operation.
      * @callback module:api/DefaultApi~techniqueTechniqueIdPutCallback
      * @param {String} error Error message, if any.
@@ -1149,6 +1128,51 @@
     }
 
     /**
+     * Callback function to receive the result of the trainingunitPost operation.
+     * @callback module:api/DefaultApi~trainingunitPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Trainingunit} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {module:model/Trainingunit} body ID of the trainingunit
+     * @param {module:api/DefaultApi~trainingunitPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Trainingunit}
+     */
+    this.trainingunitPost = function(body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling trainingunitPost");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = [];
+      var returnType = Trainingunit;
+
+      return this.apiClient.callApi(
+        '/trainingunit', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the trainingunitReferencedByTrainingunitIdGet operation.
      * @callback module:api/DefaultApi~trainingunitReferencedByTrainingunitIdGetCallback
      * @param {String} error Error message, if any.
@@ -1280,58 +1304,6 @@
 
       return this.apiClient.callApi(
         '/trainingunit/{trainingunitId}', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the trainingunitTrainingunitIdPost operation.
-     * @callback module:api/DefaultApi~trainingunitTrainingunitIdPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Trainingunit} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} trainingunitId ID of the trainingunit
-     * @param {module:model/Trainingunit} body ID of the trainingunit
-     * @param {module:api/DefaultApi~trainingunitTrainingunitIdPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Trainingunit}
-     */
-    this.trainingunitTrainingunitIdPost = function(trainingunitId, body, callback) {
-      var postBody = body;
-
-      // verify the required parameter 'trainingunitId' is set
-      if (trainingunitId === undefined || trainingunitId === null) {
-        throw new Error("Missing the required parameter 'trainingunitId' when calling trainingunitTrainingunitIdPost");
-      }
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling trainingunitTrainingunitIdPost");
-      }
-
-
-      var pathParams = {
-        'trainingunitId': trainingunitId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = [];
-      var accepts = [];
-      var returnType = Trainingunit;
-
-      return this.apiClient.callApi(
-        '/trainingunit/{trainingunitId}', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
