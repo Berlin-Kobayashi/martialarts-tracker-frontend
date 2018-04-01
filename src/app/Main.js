@@ -14,6 +14,9 @@ import {
 } from 'material-ui/Table';
 import FloatingActionButton from 'material-ui/IconButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import DatePicker from 'material-ui/DatePicker';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
 let client = new ApiClient();
 client.basePath = 'http://localhost:8888';
@@ -32,13 +35,18 @@ class Main extends Component {
 
         this.state = {
             entity: "Training Units",
-            data: []
+            data: [],
+            newOpen: false
         };
 
         this.handleActive = this.handleActive.bind(this);
         this.renderTableBody = this.renderTableBody.bind(this);
         this.fetchData = this.fetchData.bind(this);
+        this.handleOpenNew = this.handleOpenNew.bind(this);
+        this.handleCloseNew = this.handleCloseNew.bind(this);
+    }
 
+    componentDidMount() {
         this.fetchData("Training Units")
     }
 
@@ -89,7 +97,24 @@ class Main extends Component {
 
     }
 
+    handleOpenNew() {
+        this.setState({newOpen: true});
+    }
+
+    handleCloseNew() {
+        this.setState({newOpen: false});
+    }
+
     render() {
+        const newActions = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.handleCloseNew}
+            />,
+        ];
+
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
@@ -103,7 +128,7 @@ class Main extends Component {
                         <Tab label="Exercises" onActive={this.handleActive}>
                         </Tab>
                     </Tabs>
-                    <Table>
+                    <Table height={"500px"}>
                         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                             <TableRow>
                                 <TableHeaderColumn>{this.state.entity == "Training Units" ? "Series" : "Name"}</TableHeaderColumn>
@@ -112,9 +137,19 @@ class Main extends Component {
                         </TableHeader>
                         {this.renderTableBody()}
                     </Table>
-                    <FloatingActionButton>
-                        <ContentAdd />
+                    <FloatingActionButton onClick={this.handleOpenNew}>
+                        <ContentAdd/>
                     </FloatingActionButton>
+                    <Dialog
+                        title="Dialog With Date Picker"
+                        actions={newActions}
+                        modal={false}
+                        open={this.state.newOpen}
+                        onRequestClose={this.handleCloseNew}
+                    >
+                        Open a Date Picker dialog from within a dialog.
+                        <DatePicker hintText="Date Picker"/>
+                    </Dialog>
                 </div>
             </MuiThemeProvider>
         );
