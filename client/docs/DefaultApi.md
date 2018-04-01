@@ -43,21 +43,20 @@ Method | HTTP request | Description
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var exerciseId = "exerciseId_example"; // String | ID of the exercise
+let exerciseId = "exerciseId_example"; // String | ID of the exercise
 
 
-var callback = function(error, data, response) {
+apiInstance.exerciseExerciseIdDelete(exerciseId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.exerciseExerciseIdDelete(exerciseId, callback);
+});
 ```
 
 ### Parameters
@@ -87,21 +86,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var exerciseId = "exerciseId_example"; // String | ID of the exercise
+let exerciseId = "exerciseId_example"; // String | ID of the exercise
 
 
-var callback = function(error, data, response) {
+apiInstance.exerciseExerciseIdGet(exerciseId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.exerciseExerciseIdGet(exerciseId, callback);
+});
 ```
 
 ### Parameters
@@ -131,23 +129,22 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var exerciseId = "exerciseId_example"; // String | ID of the exercise
+let exerciseId = "exerciseId_example"; // String | ID of the exercise
 
-var body = new MartialartsTracker.Exercise(); // Exercise | ID of the exercise
+let body = new MartialartsTracker.Exercise(); // Exercise | ID of the exercise
 
 
-var callback = function(error, data, response) {
+apiInstance.exerciseExerciseIdPut(exerciseIdbody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.exerciseExerciseIdPut(exerciseIdbody, callback);
+});
 ```
 
 ### Parameters
@@ -178,21 +175,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var exerciseId = "exerciseId_example"; // String | ID of the exercise
+let exerciseId = "exerciseId_example"; // String | ID of the exercise
 
 
-var callback = function(error, data, response) {
+apiInstance.exerciseExpandExerciseIdGet(exerciseId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.exerciseExpandExerciseIdGet(exerciseId, callback);
+});
 ```
 
 ### Parameters
@@ -222,18 +218,17 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var callback = function(error, data, response) {
+apiInstance.exerciseGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.exerciseGet(callback);
+});
 ```
 
 ### Parameters
@@ -260,21 +255,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var body = new MartialartsTracker.Exercise(); // Exercise | ID of the exercise
+let body = new MartialartsTracker.Exercise(); // Exercise | ID of the exercise
 
 
-var callback = function(error, data, response) {
+apiInstance.exercisePost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.exercisePost(body, callback);
+});
 ```
 
 ### Parameters
@@ -304,21 +298,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var exerciseId = "exerciseId_example"; // String | ID of the exercise
+let exerciseId = "exerciseId_example"; // String | ID of the exercise
 
 
-var callback = function(error, data, response) {
+apiInstance.exerciseReferencedByExerciseIdGet(exerciseId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.exerciseReferencedByExerciseIdGet(exerciseId, callback);
+});
 ```
 
 ### Parameters
@@ -348,18 +341,17 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var callback = function(error, data, response) {
+apiInstance.metaSwaggerGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.metaSwaggerGet(callback);
+});
 ```
 
 ### Parameters
@@ -386,21 +378,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var methodId = "methodId_example"; // String | ID of the method
+let methodId = "methodId_example"; // String | ID of the method
 
 
-var callback = function(error, data, response) {
+apiInstance.methodExpandMethodIdGet(methodId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.methodExpandMethodIdGet(methodId, callback);
+});
 ```
 
 ### Parameters
@@ -430,18 +421,17 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var callback = function(error, data, response) {
+apiInstance.methodGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.methodGet(callback);
+});
 ```
 
 ### Parameters
@@ -468,21 +458,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var methodId = "methodId_example"; // String | ID of the method
+let methodId = "methodId_example"; // String | ID of the method
 
 
-var callback = function(error, data, response) {
+apiInstance.methodMethodIdDelete(methodId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.methodMethodIdDelete(methodId, callback);
+});
 ```
 
 ### Parameters
@@ -512,21 +501,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var methodId = "methodId_example"; // String | ID of the method
+let methodId = "methodId_example"; // String | ID of the method
 
 
-var callback = function(error, data, response) {
+apiInstance.methodMethodIdGet(methodId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.methodMethodIdGet(methodId, callback);
+});
 ```
 
 ### Parameters
@@ -556,23 +544,22 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var methodId = "methodId_example"; // String | ID of the method
+let methodId = "methodId_example"; // String | ID of the method
 
-var body = new MartialartsTracker.Method(); // Method | ID of the method
+let body = new MartialartsTracker.Method(); // Method | ID of the method
 
 
-var callback = function(error, data, response) {
+apiInstance.methodMethodIdPut(methodIdbody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.methodMethodIdPut(methodIdbody, callback);
+});
 ```
 
 ### Parameters
@@ -603,21 +590,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var body = new MartialartsTracker.Method(); // Method | ID of the method
+let body = new MartialartsTracker.Method(); // Method | ID of the method
 
 
-var callback = function(error, data, response) {
+apiInstance.methodPost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.methodPost(body, callback);
+});
 ```
 
 ### Parameters
@@ -647,21 +633,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var methodId = "methodId_example"; // String | ID of the method
+let methodId = "methodId_example"; // String | ID of the method
 
 
-var callback = function(error, data, response) {
+apiInstance.methodReferencedByMethodIdGet(methodId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.methodReferencedByMethodIdGet(methodId, callback);
+});
 ```
 
 ### Parameters
@@ -691,21 +676,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var techniqueId = "techniqueId_example"; // String | ID of the technique
+let techniqueId = "techniqueId_example"; // String | ID of the technique
 
 
-var callback = function(error, data, response) {
+apiInstance.techniqueExpandTechniqueIdGet(techniqueId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.techniqueExpandTechniqueIdGet(techniqueId, callback);
+});
 ```
 
 ### Parameters
@@ -735,18 +719,17 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var callback = function(error, data, response) {
+apiInstance.techniqueGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.techniqueGet(callback);
+});
 ```
 
 ### Parameters
@@ -773,21 +756,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var body = new MartialartsTracker.Technique(); // Technique | ID of the technique
+let body = new MartialartsTracker.Technique(); // Technique | ID of the technique
 
 
-var callback = function(error, data, response) {
+apiInstance.techniquePost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.techniquePost(body, callback);
+});
 ```
 
 ### Parameters
@@ -817,21 +799,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var techniqueId = "techniqueId_example"; // String | ID of the technique
+let techniqueId = "techniqueId_example"; // String | ID of the technique
 
 
-var callback = function(error, data, response) {
+apiInstance.techniqueReferencedByTechniqueIdGet(techniqueId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.techniqueReferencedByTechniqueIdGet(techniqueId, callback);
+});
 ```
 
 ### Parameters
@@ -861,21 +842,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var techniqueId = "techniqueId_example"; // String | ID of the technique
+let techniqueId = "techniqueId_example"; // String | ID of the technique
 
 
-var callback = function(error, data, response) {
+apiInstance.techniqueTechniqueIdDelete(techniqueId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.techniqueTechniqueIdDelete(techniqueId, callback);
+});
 ```
 
 ### Parameters
@@ -905,21 +885,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var techniqueId = "techniqueId_example"; // String | ID of the technique
+let techniqueId = "techniqueId_example"; // String | ID of the technique
 
 
-var callback = function(error, data, response) {
+apiInstance.techniqueTechniqueIdGet(techniqueId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.techniqueTechniqueIdGet(techniqueId, callback);
+});
 ```
 
 ### Parameters
@@ -949,23 +928,22 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var techniqueId = "techniqueId_example"; // String | ID of the technique
+let techniqueId = "techniqueId_example"; // String | ID of the technique
 
-var body = new MartialartsTracker.Technique(); // Technique | ID of the technique
+let body = new MartialartsTracker.Technique(); // Technique | ID of the technique
 
 
-var callback = function(error, data, response) {
+apiInstance.techniqueTechniqueIdPut(techniqueIdbody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.techniqueTechniqueIdPut(techniqueIdbody, callback);
+});
 ```
 
 ### Parameters
@@ -996,21 +974,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
+let trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
 
 
-var callback = function(error, data, response) {
+apiInstance.trainingunitExpandTrainingunitIdGet(trainingunitId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.trainingunitExpandTrainingunitIdGet(trainingunitId, callback);
+});
 ```
 
 ### Parameters
@@ -1040,18 +1017,17 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var callback = function(error, data, response) {
+apiInstance.trainingunitGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.trainingunitGet(callback);
+});
 ```
 
 ### Parameters
@@ -1078,21 +1054,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var body = new MartialartsTracker.Trainingunit(); // Trainingunit | ID of the trainingunit
+let body = new MartialartsTracker.Trainingunit(); // Trainingunit | ID of the trainingunit
 
 
-var callback = function(error, data, response) {
+apiInstance.trainingunitPost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.trainingunitPost(body, callback);
+});
 ```
 
 ### Parameters
@@ -1122,21 +1097,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
+let trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
 
 
-var callback = function(error, data, response) {
+apiInstance.trainingunitReferencedByTrainingunitIdGet(trainingunitId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.trainingunitReferencedByTrainingunitIdGet(trainingunitId, callback);
+});
 ```
 
 ### Parameters
@@ -1166,21 +1140,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
+let trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
 
 
-var callback = function(error, data, response) {
+apiInstance.trainingunitTrainingunitIdDelete(trainingunitId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.trainingunitTrainingunitIdDelete(trainingunitId, callback);
+});
 ```
 
 ### Parameters
@@ -1210,21 +1183,20 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
+let trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
 
 
-var callback = function(error, data, response) {
+apiInstance.trainingunitTrainingunitIdGet(trainingunitId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.trainingunitTrainingunitIdGet(trainingunitId, callback);
+});
 ```
 
 ### Parameters
@@ -1254,23 +1226,22 @@ No authorization required
 
 ### Example
 ```javascript
-var MartialartsTracker = require('martialarts_tracker');
+import MartialartsTracker from 'martialarts_tracker';
 
-var apiInstance = new MartialartsTracker.DefaultApi();
+let apiInstance = new MartialartsTracker.DefaultApi();
 
-var trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
+let trainingunitId = "trainingunitId_example"; // String | ID of the trainingunit
 
-var body = new MartialartsTracker.Trainingunit(); // Trainingunit | ID of the trainingunit
+let body = new MartialartsTracker.Trainingunit(); // Trainingunit | ID of the trainingunit
 
 
-var callback = function(error, data, response) {
+apiInstance.trainingunitTrainingunitIdPut(trainingunitIdbody, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.trainingunitTrainingunitIdPut(trainingunitIdbody, callback);
+});
 ```
 
 ### Parameters

@@ -70,16 +70,6 @@
         done();
       });
     });
-    describe('exerciseExerciseIdPost', function() {
-      it('should call exerciseExerciseIdPost successfully', function(done) {
-        //uncomment below and update the code to test exerciseExerciseIdPost
-        //instance.exerciseExerciseIdPost(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('exerciseExerciseIdPut', function() {
       it('should call exerciseExerciseIdPut successfully', function(done) {
         //uncomment below and update the code to test exerciseExerciseIdPut
@@ -104,6 +94,16 @@
       it('should call exerciseGet successfully', function(done) {
         //uncomment below and update the code to test exerciseGet
         //instance.exerciseGet(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('exercisePost', function() {
+      it('should call exercisePost successfully', function(done) {
+        //uncomment below and update the code to test exercisePost
+        //instance.exercisePost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -170,20 +170,20 @@
         done();
       });
     });
-    describe('methodMethodIdPost', function() {
-      it('should call methodMethodIdPost successfully', function(done) {
-        //uncomment below and update the code to test methodMethodIdPost
-        //instance.methodMethodIdPost(function(error) {
+    describe('methodMethodIdPut', function() {
+      it('should call methodMethodIdPut successfully', function(done) {
+        //uncomment below and update the code to test methodMethodIdPut
+        //instance.methodMethodIdPut(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('methodMethodIdPut', function() {
-      it('should call methodMethodIdPut successfully', function(done) {
-        //uncomment below and update the code to test methodMethodIdPut
-        //instance.methodMethodIdPut(function(error) {
+    describe('methodPost', function() {
+      it('should call methodPost successfully', function(done) {
+        //uncomment below and update the code to test methodPost
+        //instance.methodPost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -220,6 +220,16 @@
         done();
       });
     });
+    describe('techniquePost', function() {
+      it('should call techniquePost successfully', function(done) {
+        //uncomment below and update the code to test techniquePost
+        //instance.techniquePost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('techniqueReferencedByTechniqueIdGet', function() {
       it('should call techniqueReferencedByTechniqueIdGet successfully', function(done) {
         //uncomment below and update the code to test techniqueReferencedByTechniqueIdGet
@@ -244,16 +254,6 @@
       it('should call techniqueTechniqueIdGet successfully', function(done) {
         //uncomment below and update the code to test techniqueTechniqueIdGet
         //instance.techniqueTechniqueIdGet(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('techniqueTechniqueIdPost', function() {
-      it('should call techniqueTechniqueIdPost successfully', function(done) {
-        //uncomment below and update the code to test techniqueTechniqueIdPost
-        //instance.techniqueTechniqueIdPost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -290,6 +290,16 @@
         done();
       });
     });
+    describe('trainingunitPost', function() {
+      it('should call trainingunitPost successfully', function(done) {
+        //uncomment below and update the code to test trainingunitPost
+        //instance.trainingunitPost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('trainingunitReferencedByTrainingunitIdGet', function() {
       it('should call trainingunitReferencedByTrainingunitIdGet successfully', function(done) {
         //uncomment below and update the code to test trainingunitReferencedByTrainingunitIdGet
@@ -314,16 +324,6 @@
       it('should call trainingunitTrainingunitIdGet successfully', function(done) {
         //uncomment below and update the code to test trainingunitTrainingunitIdGet
         //instance.trainingunitTrainingunitIdGet(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('trainingunitTrainingunitIdPost', function() {
-      it('should call trainingunitTrainingunitIdPost successfully', function(done) {
-        //uncomment below and update the code to test trainingunitTrainingunitIdPost
-        //instance.trainingunitTrainingunitIdPost(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
