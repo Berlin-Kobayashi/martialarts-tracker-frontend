@@ -8,7 +8,7 @@ build:
 	@docker run -v `pwd`:/usr/src/app --rm node:8.11-onbuild npm run-script build
 
 run:
-	@docker run --network martialarts-tracker -p 8989:80 -v `pwd`/build:/usr/share/nginx/html --rm --name nginx nginx:latest
+	@docker run -p 8989:3000 -v `pwd`:/usr/src/app --rm node:8.11-onbuild npm run-script run
 
 client:
 	@docker run --network martialarts-tracker -v `pwd`/client:/out --rm swaggerapi/swagger-codegen-cli generate -l javascript --additional-properties useES6=true -i "http://martialartstracker_api_1/meta/swagger" -o /out

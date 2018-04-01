@@ -20,7 +20,7 @@ let callback = function(error, data, response) {
 
 let technique = new Technique();
 technique.data = new ExerciseData();
-technique.data.description = "abc";
+technique.data.description = "de";
 
 api.techniquePost(technique,callback);
 
