@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Tabs, {Tab} from 'material-ui/Tabs';
 import {ApiClient, DefaultApi} from '../../client/src/index';
-import Table, {TableBody, TableHead, TableRow, TableCell} from 'material-ui/Table';
 import {createMuiTheme} from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import AppBar from 'material-ui/AppBar';
-import NewTechnique from "./newTechnique";
+import TechniqueTable from "./techniqueTable";
 
 const theme = createMuiTheme({
     palette: {
@@ -19,87 +18,125 @@ client.basePath = 'http://localhost:8888';
 
 let api = new DefaultApi(client);
 
+const tabTrainingUnit = 0;
+const tabTechnique = 1;
+const tabMethod = 2;
+const tabExercise = 3;
+
 class Main extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            data: [],
-            openNew: false,
-            tab: 0
+            trainingUnits: [],
+            techniques: [],
+            methods: [],
+            exercises: [],
+            tab: tabTrainingUnit
         };
 
         this.handleTabChange = this.handleTabChange.bind(this);
-        this.renderTableBody = this.renderTableBody.bind(this);
-        this.fetchData = this.fetchData.bind(this);
-        this.handleOpenNew = this.handleOpenNew.bind(this);
-        this.handleCloseNew = this.handleCloseNew.bind(this);
+        this.fetchTrainingUnits = this.fetchTrainingUnits.bind(this);
+        this.fetchTechniques = this.fetchTechniques.bind(this);
+        this.fetchMethods = this.fetchMethods.bind(this);
+        this.fetchExcercises = this.fetchExcercises.bind(this);
+        this.createTechnique = this.createTechnique.bind(this);
+        this.renderTable = this.renderTable.bind(this);
     }
 
     componentDidMount() {
-        this.fetchData(0)
+        this.fetchTrainingUnits();
+        this.fetchTechniques();
+        this.fetchMethods();
+        this.fetchExcercises();
     }
 
-    fetchData(tab) {
-        this.setState({tab: tab});
+    fetchTrainingUnits() {
         let callback = function (error, data) {
             if (error) {
                 alert(error);
             } else {
-                this.setState({data: data});
+                this.setState({trainingUnits: data});
             }
         };
 
         callback = callback.bind(this);
+        api.trainingunitGet(callback);
+    }
 
-        switch (tab) {
-            case 0 :
-                api.trainingunitGet(callback);
-                break;
-            case 1 :
-                api.techniqueGet(callback);
-                break;
-            case 2 :
-                api.methodGet(callback);
-                break;
-            case 3 :
-                api.exerciseGet(callback);
-                break;
-        }
+    fetchTechniques() {
+        let callback = function (error, data) {
+            if (error) {
+                alert(error);
+            } else {
+                this.setState({techniques: data});
+            }
+        };
+
+        callback = callback.bind(this);
+        api.techniqueGet(callback);
+    }
+
+    fetchMethods() {
+        let callback = function (error, data) {
+            if (error) {
+                alert(error);
+            } else {
+                this.setState({methods: data});
+            }
+        };
+
+        callback = callback.bind(this);
+        api.methodGet(callback);
+    }
+
+    fetchExcercises() {
+        let callback = function (error, data) {
+            if (error) {
+                alert(error);
+            } else {
+                this.setState({exercises: data});
+            }
+        };
+
+        callback = callback.bind(this);
+        api.exerciseGet(callback);
     }
 
     createTechnique(technique) {
-        let callback = function (error) {
+        let callback = function (error, data) {
             if (error) {
                 alert(error);
+            } else {
+                this.setState({techniques: [...this.state.techniques, data]});
             }
         };
+
+        callback = callback.bind(this);
         api.techniquePost(technique, callback)
     }
 
     handleTabChange(event, value) {
-        this.fetchData(value);
+        this.setState({tab: value});
+
+        switch (value) {
+            case tabTrainingUnit :
+                this.fetchTrainingUnits();
+                break;
+            case tabTechnique :
+                this.fetchTechniques();
+                break;
+            case tabMethod :
+                this.fetchMethods();
+                break;
+            case tabExercise :
+                this.fetchExcercises();
+                break;
+        }
     }
 
-    renderTableBody() {
-        return (
-            <TableBody>
-                {this.state.data.map((row) =>
-                    <TableRow>
-                        <TableCell>{this.state.tab == 0 ? row.data.series : row.data.name}</TableCell>
-                        <TableCell>{this.state.tab == 0 ? row.data.start : row.data.kind}</TableCell>
-                    </TableRow>
-                )}
-            </TableBody>
-        );
-    }
-
-    handleOpenNew() {
-        this.setState({open: true});
-    }
-
-    handleCloseNew() {
-        this.setState({open: false});
+    renderTable() {
+        return <TechniqueTable onSubmit={this.createTechnique} data={this.state.techniques}/>
     }
 
     render() {
@@ -114,16 +151,7 @@ class Main extends Component {
                             <Tab label="Exercises"/>
                         </Tabs>
                     </AppBar>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>{this.state.tab == 0 ? "Series" : "Name"}</TableCell>
-                                <TableCell>{this.state.tab == 0 ? "Date" : "Kind"}</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        {this.renderTableBody()}
-                    </Table>
-                    <NewTechnique onSubmit={this.createTechnique}/>
+                    {this.renderTable()}
                 </div>
             </MuiThemeProvider>
         );

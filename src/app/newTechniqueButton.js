@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Technique from "../../client/src/model/Technique";
 import ExerciseData from "../../client/src/model/ExerciseData";
 
-class NewTechnique extends Component {
+class NewTechniqueButton extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -115,7 +115,7 @@ class NewTechnique extends Component {
     }
 }
 
-NewTechnique.propTypes = {
+NewTechniqueButton.propTypes = {
     onSubmit: PropTypes.func.isRequired
 };
-export default NewTechnique;
+export default NewTechniqueButton;
