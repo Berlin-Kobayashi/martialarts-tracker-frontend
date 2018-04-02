@@ -1,45 +1,42 @@
 import React, {Component} from 'react';
-import {deepOrange500} from 'material-ui/styles/colors';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Tab, Tabs} from 'material-ui/Tabs';
+import Tabs, {Tab} from 'material-ui/Tabs';
 import {ApiClient, DefaultApi} from '../../client/src/index';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn,
-} from 'material-ui/Table';
-import FloatingActionButton from 'material-ui/IconButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import DatePicker from 'material-ui/DatePicker';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import Table, {TableBody, TableHead, TableRow, TableCell} from 'material-ui/Table';
+import Dialog, {
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+} from 'material-ui/Dialog';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+import AddIcon from 'material-ui-icons/Add';
+import {createMuiTheme} from 'material-ui/styles';
+import blue from 'material-ui/colors/blue';
+import AppBar from 'material-ui/AppBar';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: blue,
+    },
+});
 
 let client = new ApiClient();
 client.basePath = 'http://localhost:8888';
 
 let api = new DefaultApi(client);
 
-const muiTheme = getMuiTheme({
-    palette: {
-        accent1Color: deepOrange500,
-    },
-});
-
 class Main extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            entity: "Training Units",
             data: [],
-            newOpen: false
+            openNew: false,
+            tab: 0
         };
 
-        this.handleActive = this.handleActive.bind(this);
+        this.handleTabChange = this.handleTabChange.bind(this);
         this.renderTableBody = this.renderTableBody.bind(this);
         this.fetchData = this.fetchData.bind(this);
         this.handleOpenNew = this.handleOpenNew.bind(this);
@@ -47,11 +44,11 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        this.fetchData("Training Units")
+        this.fetchData(0)
     }
 
-    fetchData(entity) {
-        this.setState({entity: entity});
+    fetchData(tab) {
+        this.setState({tab: tab});
         let callback = function (error, data) {
             if (error) {
                 alert(error);
@@ -62,93 +59,94 @@ class Main extends Component {
 
         callback = callback.bind(this);
 
-        switch (entity) {
-            case "Techniques" :
-                api.techniqueGet(callback);
-                break;
-            case "Training Units" :
+        switch (tab) {
+            case 0 :
                 api.trainingunitGet(callback);
                 break;
-            case "Methods" :
+            case 1 :
+                api.techniqueGet(callback);
+                break;
+            case 2 :
                 api.methodGet(callback);
                 break;
-            case "Exercises" :
+            case 3 :
                 api.exerciseGet(callback);
                 break;
         }
     }
 
-    handleActive(tab) {
-        let label = tab.props.label;
-        this.fetchData(label)
+    handleTabChange(event, value) {
+        this.fetchData(value);
     }
 
     renderTableBody() {
         return (
-            <TableBody displayRowCheckbox={false}>
+            <TableBody>
                 {this.state.data.map((row) =>
                     <TableRow>
-                        <TableRowColumn>{this.state.entity == "Training Units" ? row.data.series : row.data.name}</TableRowColumn>
-                        <TableRowColumn>{this.state.entity == "Training Units" ? row.data.start : row.data.kind}</TableRowColumn>
+                        <TableCell>{this.state.tab == 0 ? row.data.series : row.data.name}</TableCell>
+                        <TableCell>{this.state.tab == 0 ? row.data.start : row.data.kind}</TableCell>
                     </TableRow>
                 )}
             </TableBody>
         );
-
     }
 
     handleOpenNew() {
-        this.setState({newOpen: true});
+        this.setState({openNew: true});
     }
 
     handleCloseNew() {
-        this.setState({newOpen: false});
+        this.setState({openNew: false});
     }
 
     render() {
-        const newActions = [
-            <FlatButton
-                label="Ok"
-                primary={true}
-                keyboardFocused={true}
-                onClick={this.handleCloseNew}
-            />,
-        ];
-
         return (
-            <MuiThemeProvider muiTheme={muiTheme}>
+            <MuiThemeProvider theme={theme}>
                 <div>
-                    <Tabs>
-                        <Tab label="Training Units" onActive={this.handleActive}>
-                        </Tab>
-                        <Tab label="Techniques" onActive={this.handleActive}>
-                        </Tab>
-                        <Tab label="Methods" onActive={this.handleActive}>
-                        </Tab>
-                        <Tab label="Exercises" onActive={this.handleActive}>
-                        </Tab>
-                    </Tabs>
-                    <Table height={"500px"}>
-                        <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                    <AppBar position="static">
+                        <Tabs fullWidth centered value={this.state.tab} onChange={this.handleTabChange}>
+                            <Tab label="Training Units"/>
+                            <Tab label="Techniques"/>
+                            <Tab label="Methods"/>
+                            <Tab label="Exercises"/>
+                        </Tabs>
+                    </AppBar>
+                    <Table>
+                        <TableHead>
                             <TableRow>
-                                <TableHeaderColumn>{this.state.entity == "Training Units" ? "Series" : "Name"}</TableHeaderColumn>
-                                <TableHeaderColumn>{this.state.entity == "Training Units" ? "Date" : "Kind"}</TableHeaderColumn>
+                                <TableCell>{this.state.tab == 0 ? "Series" : "Name"}</TableCell>
+                                <TableCell>{this.state.tab == 0 ? "Date" : "Kind"}</TableCell>
                             </TableRow>
-                        </TableHeader>
+                        </TableHead>
                         {this.renderTableBody()}
                     </Table>
-                    <FloatingActionButton onClick={this.handleOpenNew}>
-                        <ContentAdd/>
-                    </FloatingActionButton>
+                    <Button variant="fab" color="primary" aria-label="new" onClick={this.handleOpenNew}>
+                        <AddIcon/>
+                    </Button>
                     <Dialog
-                        title="Dialog With Date Picker"
-                        actions={newActions}
-                        modal={false}
-                        open={this.state.newOpen}
-                        onRequestClose={this.handleCloseNew}
+                        open={this.state.openNew}
+                        onClose={this.handleCloseNew}
+                        aria-labelledby="new-dialog-title"
                     >
-                        Open a Date Picker dialog from within a dialog.
-                        <DatePicker hintText="Date Picker"/>
+                        <DialogTitle id="new-dialog-title">New</DialogTitle>
+                        <DialogContent>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="name"
+                                label="Name"
+                                fullWidth
+                            />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleCloseNew} color="primary">
+                                Cancel
+                            </Button>
+                            <Button onClick={this.handleCloseNew} color="primary">
+                                Submit
+                            </Button>
+                        </DialogActions>
                     </Dialog>
                 </div>
             </MuiThemeProvider>
