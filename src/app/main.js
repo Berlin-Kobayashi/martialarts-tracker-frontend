@@ -3,17 +3,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Tabs, {Tab} from 'material-ui/Tabs';
 import {ApiClient, DefaultApi} from '../../client/src/index';
 import Table, {TableBody, TableHead, TableRow, TableCell} from 'material-ui/Table';
-import Dialog, {
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-} from 'material-ui/Dialog';
-import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
-import AddIcon from 'material-ui-icons/Add';
 import {createMuiTheme} from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import AppBar from 'material-ui/AppBar';
+import NewTechnique from "./newTechnique";
 
 const theme = createMuiTheme({
     palette: {
@@ -75,6 +68,15 @@ class Main extends Component {
         }
     }
 
+    createTechnique(technique) {
+        let callback = function (error) {
+            if (error) {
+                alert(error);
+            }
+        };
+        api.techniquePost(technique, callback)
+    }
+
     handleTabChange(event, value) {
         this.fetchData(value);
     }
@@ -93,11 +95,11 @@ class Main extends Component {
     }
 
     handleOpenNew() {
-        this.setState({openNew: true});
+        this.setState({open: true});
     }
 
     handleCloseNew() {
-        this.setState({openNew: false});
+        this.setState({open: false});
     }
 
     render() {
@@ -121,33 +123,7 @@ class Main extends Component {
                         </TableHead>
                         {this.renderTableBody()}
                     </Table>
-                    <Button variant="fab" color="primary" aria-label="new" onClick={this.handleOpenNew}>
-                        <AddIcon/>
-                    </Button>
-                    <Dialog
-                        open={this.state.openNew}
-                        onClose={this.handleCloseNew}
-                        aria-labelledby="new-dialog-title"
-                    >
-                        <DialogTitle id="new-dialog-title">New</DialogTitle>
-                        <DialogContent>
-                            <TextField
-                                autoFocus
-                                margin="dense"
-                                id="name"
-                                label="Name"
-                                fullWidth
-                            />
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={this.handleCloseNew} color="primary">
-                                Cancel
-                            </Button>
-                            <Button onClick={this.handleCloseNew} color="primary">
-                                Submit
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
+                    <NewTechnique onSubmit={this.createTechnique}/>
                 </div>
             </MuiThemeProvider>
         );
