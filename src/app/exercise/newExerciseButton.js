@@ -8,10 +8,10 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import AddIcon from 'material-ui-icons/Add';
 import PropTypes from 'prop-types';
-import Technique from "../../client/src/model/Technique";
-import ExerciseData from "../../client/src/model/ExerciseData";
+import ExerciseData from "../../../client/src/model/ExerciseData";
+import Exercise from "../../../client/src/model/Exercise";
 
-class NewTechniqueButton extends Component {
+class NewExerciseButton extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -53,13 +53,13 @@ class NewTechniqueButton extends Component {
     handleSubmit() {
         this.setState({open: false});
 
-        let technique = new Technique();
-        technique.data = new ExerciseData();
-        technique.data.name = this.state.name;
-        technique.data.kind = this.state.kind;
-        technique.data.description = this.state.description;
+        let exercise = new Exercise();
+        exercise.data = new ExerciseData();
+        exercise.data.name = this.state.name;
+        exercise.data.kind = this.state.kind;
+        exercise.data.description = this.state.description;
 
-        this.props.onSubmit(technique);
+        this.props.onSubmit(exercise);
     }
 
     render() {
@@ -73,7 +73,7 @@ class NewTechniqueButton extends Component {
                     onClose={this.handleClose}
                     aria-labelledby="new-dialog-title"
                 >
-                    <DialogTitle id="new-dialog-title">New Technique</DialogTitle>
+                    <DialogTitle id="new-dialog-title">New Exercise</DialogTitle>
                     <DialogContent>
                         <TextField
                             autoFocus
@@ -115,7 +115,7 @@ class NewTechniqueButton extends Component {
     }
 }
 
-NewTechniqueButton.propTypes = {
+NewExerciseButton.propTypes = {
     onSubmit: PropTypes.func.isRequired
 };
-export default NewTechniqueButton;
+export default NewExerciseButton;

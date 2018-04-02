@@ -5,7 +5,10 @@ import {ApiClient, DefaultApi} from '../../client/src/index';
 import {createMuiTheme} from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import AppBar from 'material-ui/AppBar';
-import TechniqueTable from "./techniqueTable";
+import TechniqueTable from "./technique/techniqueTable";
+import ExerciseTable from "./exercise/exerciseTable";
+import TrainingUnitTable from "./trainingUnit/trainingUnitTable";
+import MethodTable from "./method/methodTable";
 
 const theme = createMuiTheme({
     palette: {
@@ -39,8 +42,11 @@ class Main extends Component {
         this.fetchTrainingUnits = this.fetchTrainingUnits.bind(this);
         this.fetchTechniques = this.fetchTechniques.bind(this);
         this.fetchMethods = this.fetchMethods.bind(this);
-        this.fetchExcercises = this.fetchExcercises.bind(this);
+        this.fetchExercises = this.fetchExercises.bind(this);
         this.createTechnique = this.createTechnique.bind(this);
+        this.createExercise = this.createExercise.bind(this);
+        this.createMethod = this.createMethod.bind(this);
+        this.createTrainingUnit = this.createTrainingUnit.bind(this);
         this.renderTable = this.renderTable.bind(this);
     }
 
@@ -48,7 +54,7 @@ class Main extends Component {
         this.fetchTrainingUnits();
         this.fetchTechniques();
         this.fetchMethods();
-        this.fetchExcercises();
+        this.fetchExercises();
     }
 
     fetchTrainingUnits() {
@@ -90,7 +96,7 @@ class Main extends Component {
         api.methodGet(callback);
     }
 
-    fetchExcercises() {
+    fetchExercises() {
         let callback = function (error, data) {
             if (error) {
                 alert(error);
@@ -116,6 +122,45 @@ class Main extends Component {
         api.techniquePost(technique, callback)
     }
 
+    createExercise(exercise) {
+        let callback = function (error, data) {
+            if (error) {
+                alert(error);
+            } else {
+                this.setState({exercises: [...this.state.exercises, data]});
+            }
+        };
+
+        callback = callback.bind(this);
+        api.exercisePost(exercise, callback)
+    }
+
+    createMethod(method) {
+        let callback = function (error, data) {
+            if (error) {
+                alert(error);
+            } else {
+                this.setState({methods: [...this.state.methods, data]});
+            }
+        };
+
+        callback = callback.bind(this);
+        api.methodPost(method, callback)
+    }
+
+    createTrainingUnit(trainingUnit) {
+        let callback = function (error, data) {
+            if (error) {
+                alert(error);
+            } else {
+                this.setState({trainingUnits: [...this.state.trainingUnits, data]});
+            }
+        };
+
+        callback = callback.bind(this);
+        api.trainingunitPost(trainingUnit, callback)
+    }
+
     handleTabChange(event, value) {
         this.setState({tab: value});
 
@@ -130,13 +175,22 @@ class Main extends Component {
                 this.fetchMethods();
                 break;
             case tabExercise :
-                this.fetchExcercises();
+                this.fetchExercises();
                 break;
         }
     }
 
     renderTable() {
-        return <TechniqueTable onSubmit={this.createTechnique} data={this.state.techniques}/>
+        switch (this.state.tab) {
+            case tabTrainingUnit :
+                return <TrainingUnitTable onSubmit={this.createTrainingUnit} data={this.state.trainingUnits}/>;
+            case tabTechnique :
+                return <TechniqueTable onSubmit={this.createTechnique} data={this.state.techniques}/>;
+            case tabMethod :
+                return <MethodTable onSubmit={this.createMethod} data={this.state.methods}/>;
+            case tabExercise :
+                return <ExerciseTable onSubmit={this.createExercise} data={this.state.exercises}/>;
+        }
     }
 
     render() {
