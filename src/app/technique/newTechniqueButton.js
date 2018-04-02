@@ -72,6 +72,7 @@ class NewTechniqueButton extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="new-dialog-title"
+                    fullScreen
                 >
                     <DialogTitle id="new-dialog-title">New Technique</DialogTitle>
                     <DialogContent>
