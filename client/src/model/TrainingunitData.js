@@ -59,9 +59,6 @@ export default class TrainingunitData {
             if (data.hasOwnProperty('end')) {
                 obj['end'] = ApiClient.convertToType(data['end'], 'String');
             }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
             if (data.hasOwnProperty('series')) {
                 obj['series'] = ApiClient.convertToType(data['series'], 'String');
             }
@@ -76,10 +73,6 @@ export default class TrainingunitData {
     * @member {String} end
     */
     end = undefined;
-    /**
-    * @member {String} id
-    */
-    id = undefined;
     /**
     * @member {String} series
     */

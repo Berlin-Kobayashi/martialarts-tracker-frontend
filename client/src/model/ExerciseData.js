@@ -59,9 +59,6 @@ export default class ExerciseData {
             if (data.hasOwnProperty('description')) {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
             if (data.hasOwnProperty('kind')) {
                 obj['kind'] = ApiClient.convertToType(data['kind'], 'String');
             }
@@ -76,10 +73,6 @@ export default class ExerciseData {
     * @member {String} description
     */
     description = undefined;
-    /**
-    * @member {String} id
-    */
-    id = undefined;
     /**
     * @member {String} kind
     */
