@@ -19,8 +19,8 @@ class TechniqueTable extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.data.map((row) =>
-                            <TableRow>
+                        {this.props.data.map((row,i) =>
+                            <TableRow key={i}>
                                 <TableCell>{row.data.name}</TableCell>
                                 <TableCell>{row.data.kind}</TableCell>
                             </TableRow>
