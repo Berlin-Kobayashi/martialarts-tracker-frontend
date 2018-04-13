@@ -39,11 +39,13 @@ class NewTrainingUnitButton extends Component {
     }
 
     handleStartChange(e) {
-        this.setState({start: e.target.value});
+        let d = new Date(Date.parse(e.target.value));
+        this.setState({start: d.toISOString()});
     }
 
     handleEndChange(e) {
-        this.setState({end: e.target.value});
+        let d = new Date(Date.parse(e.target.value));
+        this.setState({end: d.toISOString()});
     }
 
     handleSeriesChange(e) {
@@ -76,31 +78,42 @@ class NewTrainingUnitButton extends Component {
                 >
                     <DialogTitle id="new-dialog-title">New Training Unit</DialogTitle>
                     <DialogContent>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="series"
-                            label="Series"
-                            fullWidth
-                            multiline
-                            onChange={this.handleSeriesChange}
-                        />
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="start"
-                            label="Start"
-                            fullWidth
-                            onChange={this.handleStartChange}
-                        />
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="end"
-                            label="End"
-                            fullWidth
-                            onChange={this.handleEndChange}
-                        />
+                        <div>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="series"
+                                label="Series"
+                                fullWidth
+                                multiline
+                                onChange={this.handleSeriesChange}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                margin="dense"
+                                id="start"
+                                label="Start"
+                                // FIXME max/min can overflow the date waiting for new MUI date picker
+                                type="datetime-local"
+                                onChange={this.handleStartChange}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                margin="dense"
+                                id="end"
+                                label="End"
+                                type="datetime-local"
+                                onChange={this.handleEndChange}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        </div>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary">

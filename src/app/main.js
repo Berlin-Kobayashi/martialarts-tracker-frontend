@@ -26,6 +26,16 @@ const tabTechnique = 1;
 const tabMethod = 2;
 const tabExercise = 3;
 
+function transformTrainingUnit(trainingUnit) {
+    let startDate = new Date(Date.parse(trainingUnit.data.start));
+    trainingUnit.data.start = startDate.toLocaleString();
+
+    let endDate = new Date(Date.parse(trainingUnit.data.end));
+    trainingUnit.data.end = endDate.toLocaleString();
+
+    return trainingUnit;
+}
+
 class Main extends Component {
     constructor(props, context) {
         super(props, context);
@@ -62,6 +72,9 @@ class Main extends Component {
             if (error) {
                 alert(error);
             } else {
+                data = data.map((row) => {
+                    return transformTrainingUnit(row);
+                });
                 this.setState({trainingUnits: data});
             }
         };
@@ -153,7 +166,7 @@ class Main extends Component {
             if (error) {
                 alert(error);
             } else {
-                this.setState({trainingUnits: [...this.state.trainingUnits, data]});
+                this.setState({trainingUnits: [...this.state.trainingUnits, transformTrainingUnit(data)]});
             }
         };
 
