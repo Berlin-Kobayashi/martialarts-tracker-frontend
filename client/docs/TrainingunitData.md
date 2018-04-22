@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**end** | **String** |  | [optional] 
+**minutes** | **Number** |  | [optional] 
 **series** | **String** |  | [optional] 
 **start** | **String** |  | [optional] 
 

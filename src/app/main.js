@@ -30,9 +30,6 @@ function transformTrainingUnit(trainingUnit) {
     let startDate = new Date(Date.parse(trainingUnit.data.start));
     trainingUnit.data.start = startDate.toLocaleString();
 
-    let endDate = new Date(Date.parse(trainingUnit.data.end));
-    trainingUnit.data.end = endDate.toLocaleString();
-
     return trainingUnit;
 }
 

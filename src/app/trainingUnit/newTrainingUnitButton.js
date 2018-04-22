@@ -18,14 +18,14 @@ class NewTrainingUnitButton extends Component {
         this.state = {
             open: false,
             start: "",
-            end: "",
+            minutes: "",
             series: ""
         };
 
         this.handleOpen = this.handleOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleStartChange = this.handleStartChange.bind(this);
-        this.handleEndChange = this.handleEndChange.bind(this);
+        this.handleMinutesChange = this.handleMinutesChange.bind(this);
         this.handleSeriesChange = this.handleSeriesChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -43,9 +43,8 @@ class NewTrainingUnitButton extends Component {
         this.setState({start: d.toISOString()});
     }
 
-    handleEndChange(e) {
-        let d = new Date(Date.parse(e.target.value));
-        this.setState({end: d.toISOString()});
+    handleMinutesChange(e) {
+        this.setState({minutes: e.target.value});
     }
 
     handleSeriesChange(e) {
@@ -58,7 +57,7 @@ class NewTrainingUnitButton extends Component {
         let trainingUnit = new Trainingunit();
         trainingUnit.data = new TrainingunitData();
         trainingUnit.data.start = this.state.start;
-        trainingUnit.data.end = this.state.end;
+        trainingUnit.data.minutes = parseInt(this.state.minutes);
         trainingUnit.data.series = this.state.series;
 
         this.props.onSubmit(trainingUnit);
@@ -105,13 +104,10 @@ class NewTrainingUnitButton extends Component {
                         <div>
                             <TextField
                                 margin="dense"
-                                id="end"
-                                label="End"
-                                type="datetime-local"
-                                onChange={this.handleEndChange}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
+                                id="minutes"
+                                label="Minutes"
+                                type="number"
+                                onChange={this.handleMinutesChange}
                             />
                         </div>
                     </DialogContent>
