@@ -10,6 +10,7 @@ import AddIcon from 'material-ui-icons/Add';
 import PropTypes from 'prop-types';
 import ExerciseData from "../../../client/src/model/ExerciseData";
 import Method from "../../../client/src/model/Method";
+import Autocomplete from "./../util/autocomplete";
 
 class NewMethodButton extends Component {
     constructor(props, context) {
@@ -17,9 +18,9 @@ class NewMethodButton extends Component {
 
         this.state = {
             open: false,
-            name : "",
-            kind : "",
-            description : ""
+            name: "",
+            kind: "",
+            description: ""
         };
 
         this.handleOpen = this.handleOpen.bind(this);
@@ -100,6 +101,14 @@ class NewMethodButton extends Component {
                             fullWidth
                             multiline
                             onChange={this.handleDescriptionChange}
+                        />
+                        <Autocomplete
+                            placeholder={"Techniques"}
+                            id={"techniques"}
+                            options={['Jab', 'Cross']}
+                            onChange={function (d) {
+                                console.log(d);
+                            }}
                         />
                     </DialogContent>
                     <DialogActions>

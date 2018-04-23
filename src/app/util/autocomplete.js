@@ -113,7 +113,7 @@ class DownshiftMultiple extends React.Component {
     };
 
     render() {
-        const {classes, options} = this.props;
+        const {classes, options, placeholder, id} = this.props;
         const {inputValue, selectedItem} = this.state;
 
         return (
@@ -142,8 +142,8 @@ class DownshiftMultiple extends React.Component {
                                 )),
                                 onChange: this.handleInputChange,
                                 onKeyDown: this.handleKeyDown,
-                                placeholder: 'Select multiple countries',
-                                id: 'integration-downshift-multiple',
+                                placeholder: placeholder,
+                                id: id,
                             }),
                         })}
                         {isOpen ? (
@@ -170,6 +170,8 @@ DownshiftMultiple.propTypes = {
     classes: PropTypes.object.isRequired,
     options: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 const styles = theme => ({
