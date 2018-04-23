@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Downshift from 'downshift';
-import { withStyles } from 'material-ui/styles';
+import {withStyles} from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
-import { MenuItem } from 'material-ui/Menu';
+import {MenuItem} from 'material-ui/Menu';
 import Chip from 'material-ui/Chip';
 
 function renderInput(inputProps) {
-    const { InputProps, classes, ref, ...other } = inputProps;
+    const {InputProps, classes, ref, ...other} = inputProps;
 
     return (
         <TextField
@@ -25,30 +25,31 @@ function renderInput(inputProps) {
     );
 }
 
-function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
+function renderSuggestion({suggestion, index, itemProps, highlightedIndex, selectedItem}) {
     const isHighlighted = highlightedIndex === index;
-    const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1;
+    const isSelected = (selectedItem || '').indexOf(suggestion) > -1;
 
     return (
         <MenuItem
             {...itemProps}
-            key={suggestion.label}
+            key={suggestion}
             selected={isHighlighted}
             component="div"
             style={{
                 fontWeight: isSelected ? 500 : 400,
             }}
         >
-            {suggestion.label}
+            {suggestion}
         </MenuItem>
     );
 }
+
 renderSuggestion.propTypes = {
     highlightedIndex: PropTypes.number,
     index: PropTypes.number,
     itemProps: PropTypes.object,
     selectedItem: PropTypes.string,
-    suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired,
+    suggestion: PropTypes.shape({label: PropTypes.string}).isRequired,
 };
 
 function getSuggestions(inputValue, suggestions) {
@@ -56,7 +57,7 @@ function getSuggestions(inputValue, suggestions) {
 
     return suggestions.filter(suggestion => {
         const keep =
-            (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
+            (!inputValue || suggestion.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
             count < 5;
 
         if (keep) {
@@ -74,20 +75,22 @@ class DownshiftMultiple extends React.Component {
     };
 
     handleKeyDown = event => {
-        const { inputValue, selectedItem } = this.state;
+        const {inputValue, selectedItem} = this.state;
         if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
+            let newSelectedItem = selectedItem.slice(0, selectedItem.length - 1);
             this.setState({
-                selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+                selectedItem: newSelectedItem,
             });
+            this.props.onChange(newSelectedItem);
         }
     };
 
     handleInputChange = event => {
-        this.setState({ inputValue: event.target.value });
+        this.setState({inputValue: event.target.value});
     };
 
     handleChange = item => {
-        let { selectedItem } = this.state;
+        let {selectedItem} = this.state;
 
         if (selectedItem.indexOf(item) === -1) {
             selectedItem = [...selectedItem, item];
@@ -97,18 +100,21 @@ class DownshiftMultiple extends React.Component {
             inputValue: '',
             selectedItem,
         });
+
+        this.props.onChange(selectedItem);
     };
 
     handleDelete = item => () => {
         const selectedItem = [...this.state.selectedItem];
         selectedItem.splice(selectedItem.indexOf(item), 1);
 
-        this.setState({ selectedItem });
+        this.setState({selectedItem});
+        this.props.onChange(selectedItem);
     };
 
     render() {
-        const { classes, options } = this.props;
-        const { inputValue, selectedItem } = this.state;
+        const {classes, options} = this.props;
+        const {inputValue, selectedItem} = this.state;
 
         return (
             <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
@@ -146,7 +152,7 @@ class DownshiftMultiple extends React.Component {
                                     renderSuggestion({
                                         suggestion,
                                         index,
-                                        itemProps: getItemProps({ item: suggestion.label }),
+                                        itemProps: getItemProps({item: suggestion}),
                                         highlightedIndex,
                                         selectedItem: selectedItem2,
                                     }),
@@ -163,6 +169,7 @@ class DownshiftMultiple extends React.Component {
 DownshiftMultiple.propTypes = {
     classes: PropTypes.object.isRequired,
     options: PropTypes.array.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 const styles = theme => ({
