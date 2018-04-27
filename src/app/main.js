@@ -209,7 +209,7 @@ class Main extends Component {
                 <div>
                     <AppBar position="static">
                         <Tabs fullWidth centered value={this.state.tab} onChange={this.handleTabChange}>
-                            <Tab label="Training Units"/>
+                            <Tab label="Diary"/>
                             <Tab label="Techniques"/>
                             <Tab label="Methods"/>
                             <Tab label="Exercises"/>
