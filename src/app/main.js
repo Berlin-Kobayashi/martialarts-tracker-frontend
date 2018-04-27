@@ -197,7 +197,7 @@ class Main extends Component {
             case tabTechnique :
                 return <TechniqueTable onSubmit={this.createTechnique} data={this.state.techniques}/>;
             case tabMethod :
-                return <MethodTable onSubmit={this.createMethod} data={this.state.methods}/>;
+                return <MethodTable onSubmit={this.createMethod} data={this.state.methods} techniques={this.state.techniques}/>;
             case tabExercise :
                 return <ExerciseTable onSubmit={this.createExercise} data={this.state.exercises}/>;
         }

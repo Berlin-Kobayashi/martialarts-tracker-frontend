@@ -60,12 +60,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new MartialartsTracker.TrainingunitData();
-      //expect(instance).to.be();
-    });
-
     it('should have the property series (base name: "series")', function() {
       // uncomment below and update the code to test the property series
       //var instane = new MartialartsTracker.TrainingunitData();

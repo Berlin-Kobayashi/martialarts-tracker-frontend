@@ -27,7 +27,7 @@ class MethodTable extends Component {
                         )}
                     </TableBody>
                 </Table>
-                <NewMethodButton onSubmit={this.props.onSubmit}/>
+                <NewMethodButton onSubmit={this.props.onSubmit} techniques={this.props.techniques}/>
             </div>
         );
     }
@@ -35,7 +35,8 @@ class MethodTable extends Component {
 
 MethodTable.propTypes = {
     onSubmit: PropTypes.func.isRequired,
-    data: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired,
+    techniques: PropTypes.array.isRequired
 };
 
 export default MethodTable;

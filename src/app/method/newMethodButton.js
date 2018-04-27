@@ -105,7 +105,9 @@ class NewMethodButton extends Component {
                         <Autocomplete
                             placeholder={"Techniques"}
                             id={"techniques"}
-                            options={['Jab', 'Cross']}
+                            options={this.props.techniques.map((row) =>
+                                row.data.name
+                            )}
                             onChange={function (d) {
                                 console.log(d);
                             }}
@@ -126,6 +128,7 @@ class NewMethodButton extends Component {
 }
 
 NewMethodButton.propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    techniques: PropTypes.array.isRequired
 };
 export default NewMethodButton;
