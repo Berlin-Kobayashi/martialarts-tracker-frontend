@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import Dialog, {
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-} from 'material-ui/Dialog';
+import Dialog, {DialogActions, DialogContent, DialogTitle,} from 'material-ui/Dialog';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import AddIcon from 'material-ui-icons/Add';
@@ -11,6 +7,7 @@ import PropTypes from 'prop-types';
 import ExerciseData from "../../../client/src/model/ExerciseData";
 import Method from "../../../client/src/model/Method";
 import Autocomplete from "./../util/autocomplete";
+import MethodReferences from "../../../client/src/model/MethodReferences";
 
 class NewMethodButton extends Component {
     constructor(props, context) {
@@ -20,7 +17,8 @@ class NewMethodButton extends Component {
             open: false,
             name: "",
             kind: "",
-            description: ""
+            description: "",
+            covers: []
         };
 
         this.handleOpen = this.handleOpen.bind(this);
@@ -29,6 +27,8 @@ class NewMethodButton extends Component {
         this.handleKindChange = this.handleKindChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCoversChange = this.handleCoversChange.bind(this);
+        this.getCoveredIds = this.getCoveredIds.bind(this);
     }
 
     handleOpen() {
@@ -51,6 +51,10 @@ class NewMethodButton extends Component {
         this.setState({description: e.target.value});
     }
 
+    handleCoversChange(e) {
+        this.setState({covers: e});
+    }
+
     handleSubmit() {
         this.setState({open: false});
 
@@ -59,8 +63,22 @@ class NewMethodButton extends Component {
         method.data.name = this.state.name;
         method.data.kind = this.state.kind;
         method.data.description = this.state.description;
-
+        method.references = new MethodReferences();
+        method.references.covers = this.getCoveredIds();
         this.props.onSubmit(method);
+    }
+
+    getCoveredIds() {
+        let ids = [];
+        this.state.covers.map((name) => {
+            this.props.techniques.map((technique) => {
+                if (technique.data.name === name) {
+                    ids.push(technique.id);
+                }
+            });
+        });
+
+        return ids;
     }
 
     render() {
@@ -108,9 +126,7 @@ class NewMethodButton extends Component {
                             options={this.props.techniques.map((row) =>
                                 row.data.name
                             )}
-                            onChange={function (d) {
-                                console.log(d);
-                            }}
+                            onChange={this.handleCoversChange}
                         />
                     </DialogContent>
                     <DialogActions>
