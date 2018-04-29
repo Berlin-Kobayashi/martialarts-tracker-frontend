@@ -20,7 +20,7 @@ class TechniqueTable extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.data.map((row,i) =>
-                            <TableRow key={i}>
+                            <TableRow key={i} hover>
                                 <TableCell>{row.data.name}</TableCell>
                                 <TableCell>{row.data.kind}</TableCell>
                             </TableRow>

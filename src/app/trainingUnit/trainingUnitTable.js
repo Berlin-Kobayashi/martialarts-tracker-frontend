@@ -20,7 +20,7 @@ class TrainingUnitTable extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.data.map((row, i) =>
-                            <TableRow key={i}>
+                            <TableRow key={i} hover>
                                 <TableCell>{row.data.start}</TableCell>
                                 <TableCell>{row.data.series}</TableCell>
                             </TableRow>
