@@ -193,11 +193,14 @@ class Main extends Component {
     renderTable() {
         switch (this.state.tab) {
             case tabTrainingUnit :
-                return <TrainingUnitTable onSubmit={this.createTrainingUnit} data={this.state.trainingUnits}/>;
+                return <TrainingUnitTable onSubmit={this.createTrainingUnit} data={this.state.trainingUnits}
+                                          techniques={this.state.techniques} methods={this.state.methods}
+                                          exercises={this.state.exercises}/>;
             case tabTechnique :
                 return <TechniqueTable onSubmit={this.createTechnique} data={this.state.techniques}/>;
             case tabMethod :
-                return <MethodTable onSubmit={this.createMethod} data={this.state.methods} techniques={this.state.techniques}/>;
+                return <MethodTable onSubmit={this.createMethod} data={this.state.methods}
+                                    techniques={this.state.techniques}/>;
             case tabExercise :
                 return <ExerciseTable onSubmit={this.createExercise} data={this.state.exercises}/>;
         }

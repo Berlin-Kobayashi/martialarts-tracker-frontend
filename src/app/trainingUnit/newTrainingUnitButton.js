@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import Dialog, {
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-} from 'material-ui/Dialog';
+import Dialog, {DialogActions, DialogContent, DialogTitle,} from 'material-ui/Dialog';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import AddIcon from 'material-ui-icons/Add';
 import PropTypes from 'prop-types';
 import Trainingunit from "../../../client/src/model/Trainingunit";
 import TrainingunitData from "../../../client/src/model/TrainingunitData";
+import Autocomplete from "./../util/autocomplete";
+import {getIdsByNames} from "../util/utils";
+import TrainingunitReferences from "../../../client/src/model/TrainingunitReferences";
 
 class NewTrainingUnitButton extends Component {
     constructor(props, context) {
@@ -19,7 +18,10 @@ class NewTrainingUnitButton extends Component {
             open: false,
             start: "",
             minutes: "",
-            series: ""
+            series: "",
+            techniques: [],
+            methods: [],
+            exercises: [],
         };
 
         this.handleOpen = this.handleOpen.bind(this);
@@ -27,6 +29,9 @@ class NewTrainingUnitButton extends Component {
         this.handleStartChange = this.handleStartChange.bind(this);
         this.handleMinutesChange = this.handleMinutesChange.bind(this);
         this.handleSeriesChange = this.handleSeriesChange.bind(this);
+        this.handleTechniquesChange = this.handleTechniquesChange.bind(this);
+        this.handleMethodsChange = this.handleMethodsChange.bind(this);
+        this.handleExercisesChange = this.handleExercisesChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -51,6 +56,18 @@ class NewTrainingUnitButton extends Component {
         this.setState({series: e.target.value});
     }
 
+    handleTechniquesChange(e) {
+        this.setState({techniques: e});
+    }
+
+    handleMethodsChange(e) {
+        this.setState({methods: e});
+    }
+
+    handleExercisesChange(e) {
+        this.setState({exercises: e});
+    }
+
     handleSubmit() {
         this.setState({open: false});
 
@@ -59,6 +76,11 @@ class NewTrainingUnitButton extends Component {
         trainingUnit.data.start = this.state.start;
         trainingUnit.data.minutes = parseInt(this.state.minutes);
         trainingUnit.data.series = this.state.series;
+
+        trainingUnit.references = new TrainingunitReferences();
+        trainingUnit.references.techniques = getIdsByNames(this.state.techniques, this.props.techniques);
+        trainingUnit.references.methods = getIdsByNames(this.state.methods, this.props.methods);
+        trainingUnit.references.exercises = getIdsByNames(this.state.exercises, this.props.exercises);
 
         this.props.onSubmit(trainingUnit);
     }
@@ -110,6 +132,30 @@ class NewTrainingUnitButton extends Component {
                                 onChange={this.handleMinutesChange}
                             />
                         </div>
+                        <Autocomplete
+                            placeholder={"Techniques"}
+                            id={"techniques"}
+                            options={this.props.techniques.map((row) =>
+                                row.data.name
+                            )}
+                            onChange={this.handleTechniquesChange}
+                        />
+                        <Autocomplete
+                            placeholder={"Methods"}
+                            id={"methods"}
+                            options={this.props.methods.map((row) =>
+                                row.data.name
+                            )}
+                            onChange={this.handleMethodsChange}
+                        />
+                        <Autocomplete
+                            placeholder={"Exercises"}
+                            id={"exercises"}
+                            options={this.props.exercises.map((row) =>
+                                row.data.name
+                            )}
+                            onChange={this.handleExercisesChange}
+                        />
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary">
@@ -126,6 +172,9 @@ class NewTrainingUnitButton extends Component {
 }
 
 NewTrainingUnitButton.propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    techniques: PropTypes.array.isRequired,
+    methods: PropTypes.array.isRequired,
+    exercises: PropTypes.array.isRequired
 };
 export default NewTrainingUnitButton;

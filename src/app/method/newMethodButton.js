@@ -8,6 +8,7 @@ import ExerciseData from "../../../client/src/model/ExerciseData";
 import Method from "../../../client/src/model/Method";
 import Autocomplete from "./../util/autocomplete";
 import MethodReferences from "../../../client/src/model/MethodReferences";
+import {getIdsByNames} from "../util/utils";
 
 class NewMethodButton extends Component {
     constructor(props, context) {
@@ -28,7 +29,6 @@ class NewMethodButton extends Component {
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCoversChange = this.handleCoversChange.bind(this);
-        this.getCoveredIds = this.getCoveredIds.bind(this);
     }
 
     handleOpen() {
@@ -64,21 +64,8 @@ class NewMethodButton extends Component {
         method.data.kind = this.state.kind;
         method.data.description = this.state.description;
         method.references = new MethodReferences();
-        method.references.covers = this.getCoveredIds();
+        method.references.covers = getIdsByNames(this.state.covers, this.props.techniques);
         this.props.onSubmit(method);
-    }
-
-    getCoveredIds() {
-        let ids = [];
-        this.state.covers.map((name) => {
-            this.props.techniques.map((technique) => {
-                if (technique.data.name === name) {
-                    ids.push(technique.id);
-                }
-            });
-        });
-
-        return ids;
     }
 
     render() {
