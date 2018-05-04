@@ -18,25 +18,30 @@ export const entities = [{
     "data": [
         {
             "name": "name",
-            "type": typeString
+            "type": typeString,
+            "options": []
         },
         {
             "name": "description",
-            "type": typeString
+            "type": typeString,
+            "options": {
+                "multiLine": true
+            }
         },
         {
             "name": "kind",
-            "type": typeString
+            "type": typeString,
+            "options": []
         }
     ],
     "references": [],
-        "client": {
-        "new": function (data, callback) {
+    "client": {
+        "new": function (data, references, callback) {
             let technique = new Technique();
             technique.data = new ExerciseData();
-            technique.data.name = data.data.name;
-            technique.data.kind = data.data.kind;
-            technique.data.description = data.data.description;
+            technique.data.name = data.name;
+            technique.data.kind = data.kind;
+            technique.data.description = data.description;
 
             let httpCallback = function (error, data) {
                 if (error) {

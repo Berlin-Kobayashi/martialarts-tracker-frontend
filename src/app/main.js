@@ -21,7 +21,6 @@ class Main extends Component {
         this.props.entities.map((row) => data[row.dialogName] = []);
 
         this.state = {
-            // TODO make init generic
             data: data,
             tab: 0
         };

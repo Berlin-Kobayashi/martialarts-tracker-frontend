@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 import PropTypes from 'prop-types';
+import EntityNewButton from "./entityNewButton";
 
 class EntityTable extends Component {
     constructor(props, context) {
@@ -28,6 +29,7 @@ class EntityTable extends Component {
                         )}
                     </TableBody>
                 </Table>
+                <EntityNewButton onSubmit={this.props.onSubmit} entity={this.props.entity}/>
             </div>
         );
     }
