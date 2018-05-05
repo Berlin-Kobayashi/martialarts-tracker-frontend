@@ -29,7 +29,7 @@ class EntityTable extends Component {
                         )}
                     </TableBody>
                 </Table>
-                <EntityNewButton onSubmit={this.props.onSubmit} entity={this.props.entity}/>
+                <EntityNewButton data={this.props.data} onSubmit={this.props.onSubmit} entity={this.props.entity}/>
             </div>
         );
     }

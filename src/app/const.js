@@ -1,6 +1,8 @@
 import Technique from "../../client/src/model/Technique";
 import ExerciseData from "../../client/src/model/ExerciseData";
 import {ApiClient, DefaultApi} from '../../client/src/index';
+import Method from "../../client/src/model/Method";
+import MethodReferences from "../../client/src/model/MethodReferences";
 
 let client = new ApiClient();
 client.basePath = 'http://localhost:8888';
@@ -22,26 +24,23 @@ export const entities = [{
             "options": []
         },
         {
+            "name": "kind",
+            "type": typeString,
+            "options": []
+        },
+        {
             "name": "description",
             "type": typeString,
             "options": {
                 "multiLine": true
             }
-        },
-        {
-            "name": "kind",
-            "type": typeString,
-            "options": []
         }
     ],
     "references": [],
     "client": {
         "new": function (data, references, callback) {
             let technique = new Technique();
-            technique.data = new ExerciseData();
-            technique.data.name = data.name;
-            technique.data.kind = data.kind;
-            technique.data.description = data.description;
+            technique.data = ExerciseData.constructFromObject(data);
 
             let httpCallback = function (error, data) {
                 if (error) {
@@ -65,4 +64,66 @@ export const entities = [{
             api.techniqueGet(httpCallback);
         }
     }
-}];
+},
+    {
+        "dialogName": "method",
+        "headerName": "methods",
+        "columns": [
+            "name",
+            "kind"
+        ],
+        "data": [
+            {
+                "name": "name",
+                "type": typeString,
+                "options": []
+            },
+            {
+                "name": "kind",
+                "type": typeString,
+                "options": []
+            },
+            {
+                "name": "description",
+                "type": typeString,
+                "options": {
+                    "multiLine": true
+                }
+            }
+        ],
+        "references": [
+            {
+                "name": "covers",
+                "entity": "technique"
+            }
+        ],
+        "client": {
+            "new": function (data, references, callback) {
+                let method = new Method();
+                method.data = ExerciseData.constructFromObject(data);
+                method.references = MethodReferences.constructFromObject(references);
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        callback("method", data);
+                    }
+                };
+
+                api.methodPost(method, httpCallback)
+            },
+            "getAll": function (callback) {
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        callback("method", data);
+                    }
+                };
+
+                api.methodGet(httpCallback);
+            }
+        }
+    }
+];
