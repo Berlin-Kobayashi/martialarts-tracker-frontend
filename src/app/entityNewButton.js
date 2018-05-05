@@ -6,6 +6,7 @@ import AddIcon from 'material-ui-icons/Add';
 import PropTypes from 'prop-types';
 import Autocomplete from "./util/autocomplete";
 import {getIdsByNames} from "./util/utils";
+import {typeDate, typeNumber, typeString} from "./const";
 
 class EntityNewButton extends Component {
     constructor(props, context) {
@@ -26,6 +27,7 @@ class EntityNewButton extends Component {
         this.handleOpen = this.handleOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.renderDialogContent = this.renderDialogContent.bind(this);
+        this.renderDataInputField = this.renderDataInputField.bind(this);
     }
 
     handleOpen() {
@@ -41,20 +43,9 @@ class EntityNewButton extends Component {
         let content = [];
         content.push(this.props.entity.data.map((row) => {
                 i++;
-                return <TextField
-                    key={i}
-                    autoFocus
-                    margin="dense"
-                    id={row.name}
-                    label={row.name}
-                    fullWidth
-                    multiline={row.options.multiLine}
-                    onChange={function (e) {
-                        let newData = this.state.data;
-                        newData[row.name] = e.target.value;
-                        this.setState({data: newData});
-                    }.bind(this)}
-                />;
+                let inputField = this.renderDataInputField(row.type, row.name, row.options, i);
+
+                return <div>{inputField}</div>;
             }
         ));
 
@@ -77,7 +68,7 @@ class EntityNewButton extends Component {
                     options={options}
                     onChange={function (e) {
                         let newReferences = this.state.references;
-                        newReferences[row.name] = getIdsByNames(e,this.props.data[row.entity]);
+                        newReferences[row.name] = getIdsByNames(e, this.props.data[row.entity]);
                         this.setState({references: newReferences});
                     }.bind(this)}
                 />;
@@ -85,6 +76,56 @@ class EntityNewButton extends Component {
         ));
 
         return content;
+    }
+
+    renderDataInputField(type, name, options, i) {
+        switch (type) {
+            case typeString :
+                return <TextField
+                    key={i}
+                    margin="dense"
+                    id={name}
+                    label={name}
+                    fullWidth
+                    multiline={options.multiLine}
+                    onChange={function (e) {
+                        let newData = this.state.data;
+                        newData[name] = e.target.value;
+                        this.setState({data: newData});
+                    }.bind(this)}
+                />;
+            case typeNumber :
+                return <TextField
+                    key={i}
+                    margin="dense"
+                    id={name}
+                    label={name}
+                    type="number"
+                    onChange={function (e) {
+                        let newData = this.state.data;
+                        newData[name] = e.target.value;
+                        this.setState({data: newData});
+                    }.bind(this)}
+                />;
+            case typeDate :
+                return <TextField
+                    key={i}
+                    margin="dense"
+                    id={name}
+                    label={name}
+                    type="datetime-local"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    onChange={function (e) {
+                        let d = new Date(Date.parse(e.target.value));
+
+                        let newData = this.state.data;
+                        newData[name] = d.toISOString();
+                        this.setState({data: newData});
+                    }.bind(this)}
+                />;
+        }
     }
 
     render() {
