@@ -57,10 +57,6 @@ class EntityDialogContent extends Component {
                     }
                 );
 
-                options = options.filter((elem, pos, arr) => {
-                    return arr.indexOf(elem) === pos;
-                });
-
                 return <Autocomplete
                     placeholder={relation.name}
                     id={relation.name}

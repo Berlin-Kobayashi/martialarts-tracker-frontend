@@ -10,8 +10,6 @@ class EntityNewButton extends Component {
 
         this.state = {
             open: false,
-            data: {},
-            references: {}
         };
 
         this.handleOpen = this.handleOpen.bind(this);
@@ -25,8 +23,6 @@ class EntityNewButton extends Component {
     handleClose() {
         this.setState({
             open: false,
-            data: {},
-            references: {}
         });
     }
 

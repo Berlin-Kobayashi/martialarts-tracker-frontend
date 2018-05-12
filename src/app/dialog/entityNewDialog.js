@@ -8,9 +8,24 @@ class EntityNewDialog extends Component {
     constructor(props, context) {
         super(props, context);
 
+        let data = {};
+        if (this.props.defaultData == null) {
+            this.props.entity.data.map((row) => data[row.name] = []);
+        } else {
+            data = this.props.defaultData;
+        }
+
+
+        let references = {};
+        if (this.props.defaultReferences == null) {
+            this.props.entity.references.map((row) => references[row.name] = []);
+        } else {
+            references = this.props.defaultReferences;
+        }
+
         this.state = {
-            data: {},
-            references: {}
+            data: data,
+            references: references
         };
 
         this.onDataChange = this.onDataChange.bind(this);
@@ -45,7 +60,9 @@ class EntityNewDialog extends Component {
             >
                 <DialogTitle id="new-dialog-title">{"New " + this.props.entity.dialogName}</DialogTitle>
                 <EntityDialogContent entity={this.props.entity} data={this.props.data} onDataChange={this.onDataChange}
-                                     onReferencesChange={this.onReferencesChange}/>
+                                     onReferencesChange={this.onReferencesChange}
+                                     defaultReferences={this.props.defaultReferences}
+                                     defaultData={this.props.defaultData}/>
                 <DialogActions>
                     <Button onClick={this.closeAndReset} color="primary">
                         Cancel
@@ -70,6 +87,8 @@ EntityNewDialog.propTypes = {
     entity: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
-    open: PropTypes.bool.isRequired
+    open: PropTypes.bool.isRequired,
+    defaultData: PropTypes.object,
+    defaultReferences: PropTypes.object,
 };
 export default EntityNewDialog;

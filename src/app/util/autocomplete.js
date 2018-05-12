@@ -132,8 +132,12 @@ class DownshiftMultiple extends React.Component {
     };
 
     render() {
-        const {classes, options, placeholder, id} = this.props;
+        const {classes, placeholder, id} = this.props;
         const {inputValue, selectedItem} = this.state;
+
+       let options = this.props.options.filter((elem, pos, arr) => {
+            return arr.indexOf(elem) === pos;
+        });
 
         return (
             <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
