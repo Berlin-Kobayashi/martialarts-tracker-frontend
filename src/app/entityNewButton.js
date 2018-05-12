@@ -8,16 +8,10 @@ class EntityNewButton extends Component {
     constructor(props, context) {
         super(props, context);
 
-        let data = {};
-        this.props.entity.data.map((row) => data[row.name] = []);
-
-        let references = {};
-        this.props.entity.references.map((row) => references[row.name] = []);
-
         this.state = {
             open: false,
-            data: data,
-            references: references
+            data: {},
+            references: {}
         };
 
         this.handleOpen = this.handleOpen.bind(this);
@@ -29,7 +23,11 @@ class EntityNewButton extends Component {
     }
 
     handleClose() {
-        this.setState({open: false});
+        this.setState({
+            open: false,
+            data: {},
+            references: {}
+        });
     }
 
     render() {

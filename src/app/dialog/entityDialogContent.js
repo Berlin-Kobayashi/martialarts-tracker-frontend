@@ -44,13 +44,17 @@ class EntityDialogContent extends Component {
             }
         ));
 
-        content.push(this.props.entity.references.map((row) => {
+        content.push(this.props.entity.references.map((relation) => {
                 i++;
 
                 let options = [];
-
-                this.props.data[row.entity].forEach((row) =>
-                    options.push(row.data.name)
+                let selectedItem = [];
+                this.props.data[relation.entity].forEach((row) => {
+                        options.push(row.data.name);
+                        if (this.state.references[relation.name].includes(row.id)) {
+                            selectedItem.push(row.data.name);
+                        }
+                    }
                 );
 
                 options = options.filter((elem, pos, arr) => {
@@ -58,12 +62,13 @@ class EntityDialogContent extends Component {
                 });
 
                 return <Autocomplete
-                    placeholder={row.name}
-                    id={row.name}
+                    placeholder={relation.name}
+                    id={relation.name}
                     options={options}
+                    defaultValue={selectedItem}
                     onChange={function (e) {
                         let newReferences = this.state.references;
-                        newReferences[row.name] = getIdsByNames(e, this.props.data[row.entity]);
+                        newReferences[relation.name] = getIdsByNames(e, this.props.data[relation.entity]);
                         this.setState({references: newReferences});
                         this.props.onReferencesChange(newReferences);
                     }.bind(this)}

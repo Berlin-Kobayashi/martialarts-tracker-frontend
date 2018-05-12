@@ -74,6 +74,25 @@ class DownshiftMultiple extends React.Component {
         selectedItem: [],
     };
 
+    constructor(props, context) {
+        super(props, context);
+
+        let selectedItem = [];
+        if(this.props.defaultValue != null){
+            selectedItem = this.props.defaultValue;
+        }
+
+        this.state = {
+            inputValue: '',
+            selectedItem: selectedItem,
+        };
+
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
     handleKeyDown = event => {
         const {inputValue, selectedItem} = this.state;
         if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
@@ -172,6 +191,7 @@ DownshiftMultiple.propTypes = {
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    defaultValue: PropTypes.array,
 };
 
 const styles = theme => ({
