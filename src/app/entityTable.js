@@ -21,7 +21,9 @@ class EntityTable extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.data[this.props.entity.dialogName].map((row, i) =>
-                            <TableRow key={i} hover>
+                            <TableRow onClick={function () {
+                                console.log(row)
+                            }} key={i} hover>
                                 {this.props.entity.columns.map((column, i) =>
                                     <TableCell key={i}>{row.data[column]}</TableCell>
                                 )}

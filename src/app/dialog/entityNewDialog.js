@@ -41,7 +41,7 @@ class EntityNewDialog extends Component {
             >
                 <DialogTitle id="new-dialog-title">{"New " + this.props.entity.dialogName}</DialogTitle>
                 <EntityDialogContent entity={this.props.entity} data={this.props.data} onDataChange={this.onDataChange}
-                                     onReferencesChange={this.onReferencesChange} defaultData={{minutes: 1, series: "aS", start: "13/05/2018, 00:00:00"}}/>
+                                     onReferencesChange={this.onReferencesChange} defaultData={{minutes: 1, series: "aS", start: "2018-05-12T00:02:00.000Z"}}/>
                 <DialogActions>
                     <Button onClick={this.props.onClose} color="primary">
                         Cancel

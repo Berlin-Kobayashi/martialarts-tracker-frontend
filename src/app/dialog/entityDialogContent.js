@@ -38,7 +38,7 @@ class EntityDialogContent extends Component {
         let content = [];
         content.push(this.props.entity.data.map((row) => {
                 i++;
-                let inputField = this.renderDataInputField(row.type, row.name, row.options, i, this.props.defaultData[row.name]);
+                let inputField = this.renderDataInputField(row.type, row.name, row.options, i, this.state.data[row.name]);
 
                 return <div>{inputField}</div>;
             }
@@ -86,7 +86,7 @@ class EntityDialogContent extends Component {
                     label={name}
                     fullWidth
                     multiline={options.multiLine}
-                    defaultValue={defaultValue}
+                    value={defaultValue}
                     onChange={function (e) {
                         let newData = this.state.data;
                         newData[name] = e.target.value;
@@ -101,7 +101,7 @@ class EntityDialogContent extends Component {
                     id={name}
                     label={name}
                     type="number"
-                    defaultValue={defaultValue}
+                    value={defaultValue}
                     onChange={function (e) {
                         let newData = this.state.data;
                         newData[name] = e.target.value;
@@ -119,7 +119,7 @@ class EntityDialogContent extends Component {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    defaultValue={defaultValue}
+                    value={defaultValue.slice(0, -1)}
                     onChange={function (e) {
                         let d = new Date(Date.parse(e.target.value));
 

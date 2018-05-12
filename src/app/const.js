@@ -66,9 +66,6 @@ export const entities = [
                     if (error) {
                         alert(error);
                     } else {
-                        let startDate = new Date(Date.parse(data.data.start));
-                        data.data.start = startDate.toLocaleString();
-
                         callback("trainingunit", data);
                     }
                 };
@@ -80,13 +77,6 @@ export const entities = [
                     if (error) {
                         alert(error);
                     } else {
-                        data = data.map((row) => {
-                            let startDate = new Date(Date.parse(row.data.start));
-                            row.data.start = startDate.toLocaleString();
-
-                            return row;
-                        });
-
                         callback("trainingunit", data);
                     }
                 };
