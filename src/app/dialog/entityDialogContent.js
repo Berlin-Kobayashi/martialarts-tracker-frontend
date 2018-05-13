@@ -10,9 +10,10 @@ class EntityDialogContent extends Component {
     constructor(props, context) {
         super(props, context);
 
+        // TODO manage data in parent
         let data = {};
         if (props.defaultData == null) {
-            props.entity.data.map((row) => data[row.name] = []);
+            props.entity.data.map((row) => data[row.name] = "");
         } else {
             data = this.props.defaultData;
         }
@@ -30,27 +31,6 @@ class EntityDialogContent extends Component {
         };
 
         this.renderDataInputField = this.renderDataInputField.bind(this);
-    }
-
-    componentWillReceiveProps(props, context) {
-        let data = {};
-        if (props.defaultData == null) {
-            props.entity.data.map((row) => data[row.name] = []);
-        } else {
-            data = this.props.defaultData;
-        }
-
-        let references = {};
-        if (props.defaultReferences == null) {
-            props.entity.references.map((row) => references[row.name] = []);
-        } else {
-            references = props.defaultReferences;
-        }
-
-        this.setState({
-            data: data,
-            references: references
-        });
     }
 
     render() {
@@ -98,6 +78,7 @@ class EntityDialogContent extends Component {
     }
 
     renderDataInputField(type, name, options, i, defaultValue) {
+        console.log(this.state.data[name]);
         switch (type) {
             case typeString :
                 return <TextField
@@ -107,7 +88,7 @@ class EntityDialogContent extends Component {
                     label={name}
                     fullWidth
                     multiline={options.multiLine}
-                    value={defaultValue}
+                    value={this.state.data[name]}
                     onChange={function (e) {
                         let newData = this.state.data;
                         newData[name] = e.target.value;

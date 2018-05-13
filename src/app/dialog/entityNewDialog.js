@@ -8,9 +8,10 @@ class EntityNewDialog extends Component {
     constructor(props, context) {
         super(props, context);
 
+        // TODO manage data in parent
         let data = {};
         if (props.defaultData == null) {
-            props.entity.data.map((row) => data[row.name] = []);
+            props.entity.data.map((row) => data[row.name] = "");
         } else {
             data = this.props.defaultData;
         }
@@ -30,27 +31,6 @@ class EntityNewDialog extends Component {
         this.onDataChange = this.onDataChange.bind(this);
         this.onReferencesChange = this.onReferencesChange.bind(this);
         this.closeAndReset = this.closeAndReset.bind(this);
-    }
-
-    componentWillReceiveProps(props, context) {
-        let data = {};
-        if (props.defaultData == null) {
-            props.entity.data.map((row) => data[row.name] = []);
-        } else {
-            data = this.props.defaultData;
-        }
-
-        let references = {};
-        if (props.defaultReferences == null) {
-            props.entity.references.map((row) => references[row.name] = []);
-        } else {
-            references = props.defaultReferences;
-        }
-
-        this.setState({
-            data: data,
-            references: references
-        });
     }
 
     onDataChange(data) {
