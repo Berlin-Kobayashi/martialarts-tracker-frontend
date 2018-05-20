@@ -8,19 +8,14 @@ class EntityNewDialog extends Component {
     constructor(props, context) {
         super(props, context);
 
-        // TODO manage data in parent
         let data = {};
-        if (props.defaultData == null) {
-            props.entity.data.map((row) => data[row.name] = "");
-        } else {
-            data = this.props.defaultData;
+        if (props.defaultData != null) {
+            data = {...props.defaultData};
         }
 
         let references = {};
-        if (props.defaultReferences == null) {
-            props.entity.references.map((row) => references[row.name] = []);
-        } else {
-            references = props.defaultReferences;
+        if (props.defaultReferences != null) {
+            references = {...props.defaultReferences};
         }
 
         this.state = {
