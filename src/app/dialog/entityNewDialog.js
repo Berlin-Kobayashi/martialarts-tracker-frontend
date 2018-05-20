@@ -9,12 +9,16 @@ class EntityNewDialog extends Component {
         super(props, context);
 
         let data = {};
-        if (props.defaultData != null) {
+        if (props.defaultData == null) {
+            props.entity.data.map((row) => data[row.name] = "");
+        } else {
             data = {...props.defaultData};
         }
 
         let references = {};
-        if (props.defaultReferences != null) {
+        if (props.defaultReferences == null) {
+            props.entity.references.map((row) => references[row.name] = []);
+        } else {
             references = {...props.defaultReferences};
         }
 
