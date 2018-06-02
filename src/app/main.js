@@ -28,6 +28,7 @@ class Main extends Component {
         this.handleTabChange = this.handleTabChange.bind(this);
         this.setData = this.setData.bind(this);
         this.addData = this.addData.bind(this);
+        this.updateData = this.updateData.bind(this);
         this.renderTable = this.renderTable.bind(this);
         this.renderHeader = this.renderHeader.bind(this);
     }
@@ -46,6 +47,13 @@ class Main extends Component {
     addData(entityName, data) {
         let newData = this.state.data;
         newData[entityName] = [...this.state.data[entityName], data];
+        this.setState({data: newData});
+    }
+
+    updateData(entityName, data) {
+        let newData = this.state.data;
+        newData[entityName] = [...this.state.data[entityName], data];
+        // FIXME make data list an map to lookup by ID
         this.setState({data: newData});
     }
 
@@ -69,7 +77,7 @@ class Main extends Component {
     renderTable() {
         let entity = this.props.entities[this.state.tab];
 
-        return <EntityTable onSubmit={this.addData} data={this.state.data} entity={entity}/>
+        return <EntityTable onSubmit={this.addData} onEdit={this.updateData} data={this.state.data} entity={entity}/>
     }
 
     render() {

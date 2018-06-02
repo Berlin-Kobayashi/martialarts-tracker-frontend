@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import EntityNewButton from "./entityNewButton";
-import EntityNewDialog from "./dialog/entityNewDialog";
+import EntityEditDialog from "./dialog/entityEditDialog";
 
 class EntityTable extends Component {
     constructor(props, context) {
@@ -49,7 +49,7 @@ class EntityTable extends Component {
                     </TableBody>
                 </Table>
                 <EntityNewButton data={this.props.data} onSubmit={this.props.onSubmit} entity={this.props.entity}/>
-                <EntityNewDialog data={this.props.data} onSubmit={this.props.onSubmit} entity={this.props.entity}
+                <EntityEditDialog id={this.state.selected.id} data={this.props.data} onSubmit={this.props.onEdit} entity={this.props.entity}
                                  onClose={this.handleClose} open={this.state.open} defaultData={this.state.selected.data} defaultReferences={this.state.selected.references}/>
             </div>
         );
@@ -58,6 +58,7 @@ class EntityTable extends Component {
 
 EntityTable.propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     entity: PropTypes.object.isRequired
 };

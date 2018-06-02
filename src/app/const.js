@@ -252,6 +252,19 @@ export const entities = [
                 };
 
                 api.exerciseGet(httpCallback);
+            }, "update": function (id, data, references, callback) {
+                let exercise = new Exercise();
+                exercise.data = ExerciseData.constructFromObject(data);
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        callback("exercise", data);
+                    }
+                };
+
+                api.exerciseExerciseIdPut(id, exercise, httpCallback)
             }
         }
     },
