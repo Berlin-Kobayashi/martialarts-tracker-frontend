@@ -49,8 +49,8 @@ class EntityTable extends Component {
                     </TableBody>
                 </Table>
                 <EntityNewButton data={this.props.data} onSubmit={this.props.onSubmit} entity={this.props.entity}/>
-                <EntityEditDialog id={this.state.selected.id} data={this.props.data} onSubmit={this.props.onEdit} entity={this.props.entity}
-                                 onClose={this.handleClose} open={this.state.open} defaultData={this.state.selected.data} defaultReferences={this.state.selected.references}/>
+                <EntityEditDialog dialogData={this.state.selected} data={this.props.data} onSubmit={this.props.onEdit} entity={this.props.entity}
+                                 onClose={this.handleClose} open={this.state.open}/>
             </div>
         );
     }

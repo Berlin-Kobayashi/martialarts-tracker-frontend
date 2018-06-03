@@ -9,17 +9,17 @@ class EntityEditDialog extends Component {
         super(props, context);
 
         let data = {};
-        if (props.defaultData == null) {
+        if (props.dialogData.data == null) {
             props.entity.data.map((row) => data[row.name] = "");
         } else {
-            data = {...props.defaultData};
+            data = {...props.dialogData.data};
         }
 
         let references = {};
-        if (props.defaultReferences == null) {
+        if (props.dialogData.references == null) {
             props.entity.references.map((row) => references[row.name] = []);
         } else {
-            references = {...props.defaultReferences};
+            references = {...props.dialogData.references};
         }
 
         this.state = {
@@ -60,15 +60,15 @@ class EntityEditDialog extends Component {
                 <DialogTitle id="edit-dialog-title">{"Edit " + this.props.entity.dialogName}</DialogTitle>
                 <EntityDialogContent entity={this.props.entity} data={this.props.data} onDataChange={this.onDataChange}
                                      onReferencesChange={this.onReferencesChange}
-                                     defaultReferences={this.props.defaultReferences}
-                                     defaultData={this.props.defaultData}/>
+                                     defaultReferences={this.props.dialogData.references}
+                                     defaultData={this.props.dialogData.data}/>
                 <DialogActions>
                     <Button onClick={this.closeAndReset} color="primary">
                         Cancel
                     </Button>
                     <Button
                         onClick={function () {
-                            this.props.entity.client.update(this.props.id, this.state.data, this.state.references, this.props.onSubmit);
+                            this.props.entity.client.update(this.props.dialogData.id, Object.assign(this.props.dialogData.data, this.state.data), Object.assign(this.props.dialogData.references, this.state.references), this.props.onSubmit);
                             this.closeAndReset();
                         }.bind(this)}
                         color="primary"
@@ -87,8 +87,6 @@ EntityEditDialog.propTypes = {
     data: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    defaultData: PropTypes.object,
-    defaultReferences: PropTypes.object,
-    id: PropTypes.string.isRequired,
+    dialogData: PropTypes.object
 };
 export default EntityEditDialog;

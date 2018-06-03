@@ -82,6 +82,22 @@ export const entities = [
                 };
 
                 api.trainingunitGet(httpCallback);
+            },
+            "update": function (id, data, references, callback) {
+                let trainingUnit = new Trainingunit();
+                trainingUnit.data = TrainingunitData.constructFromObject(data);
+                trainingUnit.references = TrainingunitReferences.constructFromObject(references);
+                trainingUnit.id = id;
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        callback("exercise", data);
+                    }
+                };
+
+                api.trainingunitTrainingunitIdPut(id, trainingUnit, httpCallback)
             }
         }
     },
@@ -137,6 +153,21 @@ export const entities = [
                 };
 
                 api.techniqueGet(httpCallback);
+            },
+            "update": function (id, data, references, callback) {
+                let technique = new Technique();
+                technique.data = ExerciseData.constructFromObject(data);
+                technique.id = id;
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        callback("exercise", data);
+                    }
+                };
+
+                api.techniqueTechniqueIdPut(id, technique, httpCallback)
             }
         }
     },
@@ -198,6 +229,22 @@ export const entities = [
                 };
 
                 api.methodGet(httpCallback);
+            },
+            "update": function (id, data, references, callback) {
+                let method = new Method();
+                method.data = ExerciseData.constructFromObject(data);
+                method.references = MethodReferences.constructFromObject(references);
+                method.id = id;
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        callback("exercise", data);
+                    }
+                };
+
+                api.methodMethodIdPut(id, method, httpCallback)
             }
         }
     }, {
@@ -254,6 +301,7 @@ export const entities = [
                 api.exerciseGet(httpCallback);
             }, "update": function (id, data, references, callback) {
                 let exercise = new Exercise();
+                exercise.id = id;
                 exercise.data = ExerciseData.constructFromObject(data);
 
                 let httpCallback = function (error, data) {
