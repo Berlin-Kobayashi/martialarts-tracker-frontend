@@ -25,9 +25,11 @@
   "dependencies": {
     "material-ui": "^1.0.0-beta.40",
     "material-ui-icons": "^1.0.0-beta.36",
+    "proptypes": "^1.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.7",
     "react-tap-event-plugin": "^2.0.1",
-    "proptypes": "^1.1.0"
+    "redux": "^4.0.0"
   }
 }
