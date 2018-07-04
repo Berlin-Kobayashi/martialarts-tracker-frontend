@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Main from './main';
+import Main from './components/main';
 import {entities} from "./const";
 
 // Needed for onTouchTap

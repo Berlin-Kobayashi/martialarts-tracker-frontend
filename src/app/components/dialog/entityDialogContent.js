@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
-import Autocomplete from "./../util/autocomplete";
-import {getIdsByNames} from "./../util/utils";
-import {typeDate, typeNumber, typeString} from "./../const";
+import Autocomplete from "../autocomplete";
+import {getIdsByNames} from "../../utils";
+import {typeDate, typeNumber, typeString} from "../../const";
 import {DialogContent} from 'material-ui/Dialog';
 
 class EntityDialogContent extends Component {
