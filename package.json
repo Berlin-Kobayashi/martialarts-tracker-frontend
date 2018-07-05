@@ -23,6 +23,7 @@
     "downshift": "^1.31.12"
   },
   "dependencies": {
+    "lodash": "^4.17.10",
     "material-ui": "^1.0.0-beta.40",
     "material-ui-icons": "^1.0.0-beta.36",
     "proptypes": "^1.1.0",

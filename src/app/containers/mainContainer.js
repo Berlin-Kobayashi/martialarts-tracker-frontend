@@ -4,7 +4,6 @@ import React from 'react';
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state, ownProps) => ({
-    data: state,
     entities: entities
 });
 

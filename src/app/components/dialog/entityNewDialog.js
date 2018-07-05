@@ -3,6 +3,7 @@ import Dialog, {DialogActions, DialogTitle,} from 'material-ui/Dialog';
 import Button from 'material-ui/Button';
 import PropTypes from 'prop-types';
 import EntityDialogContent from "./entityDialogContent";
+import {connect} from "react-redux";
 
 class EntityNewDialog extends Component {
     constructor(props, context) {
@@ -58,7 +59,7 @@ class EntityNewDialog extends Component {
                 fullScreen
             >
                 <DialogTitle id="new-dialog-title">{"New " + this.props.entity.dialogName}</DialogTitle>
-                <EntityDialogContent entity={this.props.entity} data={this.props.data} onDataChange={this.onDataChange}
+                <EntityDialogContent entity={this.props.entity} onDataChange={this.onDataChange}
                                      onReferencesChange={this.onReferencesChange}
                                      defaultReferences={this.props.defaultReferences}
                                      defaultData={this.props.defaultData}/>
@@ -83,11 +84,16 @@ class EntityNewDialog extends Component {
 
 EntityNewDialog.propTypes = {
     entity: PropTypes.object.isRequired,
-    data: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     defaultData: PropTypes.object,
     defaultReferences: PropTypes.object,
-    dispatch: PropTypes.func.isRequired
 };
-export default EntityNewDialog;
+
+const mapStateToProps = (state, ownProps) => ({});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    dispatch: dispatch
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(EntityNewDialog)

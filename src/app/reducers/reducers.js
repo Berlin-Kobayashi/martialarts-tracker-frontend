@@ -14,11 +14,11 @@ const reducer = (state = initialState, action) => {
 
             state[action.entity] = resourceMap;
 
-            return state;
+            return _.cloneDeep(state);
         case Actions.ADD_NEW:
             state[action.entity][action.data.id] = action.data;
 
-            return state;
+            return  _.cloneDeep(state);
         default:
             return state
     }

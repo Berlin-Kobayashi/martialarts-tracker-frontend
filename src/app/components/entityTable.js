@@ -3,6 +3,9 @@ import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Tabl
 import PropTypes from 'prop-types';
 import EntityNewButton from "./entityNewButton";
 import EntityNewDialog from "./dialog/entityNewDialog";
+import {entities} from "../const";
+import {connect} from "react-redux";
+import Main from "./main";
 
 class EntityTable extends Component {
     constructor(props, context) {
@@ -57,9 +60,15 @@ class EntityTable extends Component {
 }
 
 EntityTable.propTypes = {
-    data: PropTypes.object.isRequired,
     entity: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
 };
 
-export default EntityTable;
+const mapStateToProps = (state, ownProps) => ({
+    data: state
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    dispatch: dispatch
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(EntityTable)

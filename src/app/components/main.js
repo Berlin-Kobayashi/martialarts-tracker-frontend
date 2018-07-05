@@ -25,7 +25,9 @@ class Main extends Component {
         this.handleTabChange = this.handleTabChange.bind(this);
         this.renderTable = this.renderTable.bind(this);
         this.renderHeader = this.renderHeader.bind(this);
+    }
 
+    componentDidMount() {
         entities.map((entity) => entity.client.getAll(this.props.dispatch));
     }
 
@@ -49,7 +51,7 @@ class Main extends Component {
     renderTable() {
         let entity = this.props.entities[this.state.tab];
 
-        return <EntityTable data={this.props.data} dispatch={this.props.dispatch} entity={entity}/>
+        return <EntityTable entity={entity}/>
     }
 
     render() {
@@ -65,7 +67,6 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-    data: PropTypes.object.isRequired,
     entities: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired
 };
