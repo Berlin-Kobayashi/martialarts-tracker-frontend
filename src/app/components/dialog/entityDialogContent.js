@@ -48,10 +48,10 @@ class EntityDialogContent extends Component {
 
                 let options = [];
                 let selectedItem = [];
-                this.props.data[relation.entity].forEach((row) => {
-                        options.push(row.data.name);
-                        if (this.state.references[relation.name].includes(row.id)) {
-                            selectedItem.push(row.data.name);
+            Object.keys(this.props.data[relation.entity]).forEach((id) => {
+                        options.push(this.props.data[relation.entity][id].data.name);
+                        if (this.state.references[relation.name].includes(this.props.data[relation.entity][id].id)) {
+                            selectedItem.push(this.props.data[relation.entity][id].data.name);
                         }
                     }
                 );
@@ -77,7 +77,6 @@ class EntityDialogContent extends Component {
     }
 
     renderDataInputField(type, name, options, i, defaultValue) {
-        console.log(this.state.data[name]);
         switch (type) {
             case typeString :
                 return <TextField

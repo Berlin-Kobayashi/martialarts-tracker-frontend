@@ -6,6 +6,7 @@ import blue from 'material-ui/colors/blue';
 import AppBar from 'material-ui/AppBar';
 import PropTypes from 'prop-types';
 import EntityTable from "./entityTable";
+import {entities} from "../const";
 
 const theme = createMuiTheme({
     palette: {
@@ -17,43 +18,22 @@ class Main extends Component {
     constructor(props, context) {
         super(props, context);
 
-        let data = {};
-        this.props.entities.map((row) => data[row.dialogName] = []);
-
         this.state = {
-            data: data,
             tab: 0
         };
 
         this.handleTabChange = this.handleTabChange.bind(this);
-        this.setData = this.setData.bind(this);
-        this.addData = this.addData.bind(this);
         this.renderTable = this.renderTable.bind(this);
         this.renderHeader = this.renderHeader.bind(this);
-    }
 
-    // TODO try with willMount
-    componentDidMount() {
-        this.props.entities.map((entity) => entity.client.getAll(this.setData))
-    }
-
-    setData(entityName, data) {
-        let newData = this.state.data;
-        newData[entityName] = data;
-        this.setState({data: newData});
-    }
-
-    addData(entityName, data) {
-        let newData = this.state.data;
-        newData[entityName] = [...this.state.data[entityName], data];
-        this.setState({data: newData});
+        entities.map((entity) => entity.client.getAll(this.props.dispatch));
     }
 
     handleTabChange(event, value) {
         this.setState({tab: value});
 
         let entity = this.props.entities[this.state.tab];
-        entity.client.getAll(this.setData);
+        entity.client.getAll(this.props.dispatch);
     }
 
     renderHeader() {
@@ -69,7 +49,7 @@ class Main extends Component {
     renderTable() {
         let entity = this.props.entities[this.state.tab];
 
-        return <EntityTable onSubmit={this.addData} data={this.state.data} entity={entity}/>
+        return <EntityTable data={this.props.data} dispatch={this.props.dispatch} entity={entity}/>
     }
 
     render() {
@@ -85,7 +65,9 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-    entities: PropTypes.array.isRequired
+    data: PropTypes.object.isRequired,
+    entities: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default Main;

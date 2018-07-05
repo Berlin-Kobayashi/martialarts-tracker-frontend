@@ -7,6 +7,7 @@ import Exercise from "../../client/src/model/Exercise";
 import Trainingunit from "../../client/src/model/Trainingunit";
 import TrainingunitData from "../../client/src/model/TrainingunitData";
 import TrainingunitReferences from "../../client/src/model/TrainingunitReferences";
+import {addNew, getAll} from "./actions";
 
 let client = new ApiClient();
 client.basePath = 'http://localhost:8888';
@@ -57,7 +58,7 @@ export const entities = [
             }
         ],
         "client": {
-            "new": function (data, references, callback) {
+            "new": function (data, references, dispatch) {
                 let trainingUnit = new Trainingunit();
                 trainingUnit.data = TrainingunitData.constructFromObject(data);
                 trainingUnit.references = TrainingunitReferences.constructFromObject(references);
@@ -66,18 +67,18 @@ export const entities = [
                     if (error) {
                         alert(error);
                     } else {
-                        callback("trainingunit", data);
+                        dispatch(addNew("trainingunit", data))
                     }
                 };
 
                 api.trainingunitPost(trainingUnit, httpCallback)
             },
-            "getAll": function (callback) {
+            "getAll": function (dispatch) {
                 let httpCallback = function (error, data) {
                     if (error) {
                         alert(error);
                     } else {
-                        callback("trainingunit", data);
+                        dispatch(getAll("trainingunit", data));
                     }
                 };
 
@@ -113,7 +114,7 @@ export const entities = [
         ],
         "references": [],
         "client": {
-            "new": function (data, references, callback) {
+            "new": function (data, references, dispatch) {
                 let technique = new Technique();
                 technique.data = ExerciseData.constructFromObject(data);
 
@@ -121,18 +122,18 @@ export const entities = [
                     if (error) {
                         alert(error);
                     } else {
-                        callback("technique", data);
+                        dispatch(addNew("technique", data))
                     }
                 };
 
                 api.techniquePost(technique, httpCallback)
             },
-            "getAll": function (callback) {
+            "getAll": function (dispatch) {
                 let httpCallback = function (error, data) {
                     if (error) {
                         alert(error);
                     } else {
-                        callback("technique", data);
+                        dispatch(getAll("technique", data));
                     }
                 };
 
@@ -173,7 +174,7 @@ export const entities = [
             }
         ],
         "client": {
-            "new": function (data, references, callback) {
+            "new": function (data, references, dispatch) {
                 let method = new Method();
                 method.data = ExerciseData.constructFromObject(data);
                 method.references = MethodReferences.constructFromObject(references);
@@ -182,18 +183,18 @@ export const entities = [
                     if (error) {
                         alert(error);
                     } else {
-                        callback("method", data);
+                        dispatch(addNew("method", data))
                     }
                 };
 
                 api.methodPost(method, httpCallback)
             },
-            "getAll": function (callback) {
+            "getAll": function (dispatch) {
                 let httpCallback = function (error, data) {
                     if (error) {
                         alert(error);
                     } else {
-                        callback("method", data);
+                        dispatch(getAll("method", data));
                     }
                 };
 
@@ -228,7 +229,7 @@ export const entities = [
         ],
         "references": [],
         "client": {
-            "new": function (data, references, callback) {
+            "new": function (data, references, dispatch) {
                 let exercise = new Exercise();
                 exercise.data = ExerciseData.constructFromObject(data);
 
@@ -236,18 +237,18 @@ export const entities = [
                     if (error) {
                         alert(error);
                     } else {
-                        callback("exercise", data);
+                        dispatch(addNew("exercise", data))
                     }
                 };
 
                 api.exercisePost(exercise, httpCallback)
             },
-            "getAll": function (callback) {
+            "getAll": function (dispatch) {
                 let httpCallback = function (error, data) {
                     if (error) {
                         alert(error);
                     } else {
-                        callback("exercise", data);
+                        dispatch(getAll("exercise", data))
                     }
                 };
 

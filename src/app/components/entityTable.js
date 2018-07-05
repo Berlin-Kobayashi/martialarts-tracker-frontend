@@ -34,22 +34,22 @@ class EntityTable extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.data[this.props.entity.dialogName].map((row, i) =>
+                        {Object.keys(this.props.data[this.props.entity.dialogName]).map((id, i) =>
                             <TableRow onClick={function () {
                                 this.setState({
                                     open: true,
-                                    selected: row
+                                    selected: this.props.data[this.props.entity.dialogName][id]
                                 });
                             }.bind(this)} key={i} hover>
                                 {this.props.entity.columns.map((column, i) =>
-                                    <TableCell key={i}>{row.data[column]}</TableCell>
+                                    <TableCell key={i}>{this.props.data[this.props.entity.dialogName][id].data[column]}</TableCell>
                                 )}
                             </TableRow>
                         )}
                     </TableBody>
                 </Table>
-                <EntityNewButton data={this.props.data} onSubmit={this.props.onSubmit} entity={this.props.entity}/>
-                <EntityNewDialog data={this.props.data} onSubmit={this.props.onSubmit} entity={this.props.entity}
+                <EntityNewButton dispatch={this.props.dispatch} data={this.props.data} entity={this.props.entity}/>
+                <EntityNewDialog dispatch={this.props.dispatch} data={this.props.data} entity={this.props.entity}
                                  onClose={this.handleClose} open={this.state.open} defaultData={this.state.selected.data} defaultReferences={this.state.selected.references}/>
             </div>
         );
@@ -57,9 +57,9 @@ class EntityTable extends Component {
 }
 
 EntityTable.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
-    entity: PropTypes.object.isRequired
+    entity: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default EntityTable;

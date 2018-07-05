@@ -32,7 +32,7 @@ class EntityNewButton extends Component {
                 <Button variant="fab" color="primary" aria-label="new" onClick={this.handleOpen}>
                     <AddIcon/>
                 </Button>
-                <EntityNewDialog onSubmit={this.props.onSubmit} entity={this.props.entity} data={this.props.data}
+                <EntityNewDialog dispatch={this.props.dispatch} entity={this.props.entity} data={this.props.data}
                                  open={this.state.open} onClose={this.handleClose}/>
             </div>
         );
@@ -40,8 +40,8 @@ class EntityNewButton extends Component {
 }
 
 EntityNewButton.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
     entity: PropTypes.object.isRequired,
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 export default EntityNewButton;

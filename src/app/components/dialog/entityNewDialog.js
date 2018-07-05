@@ -68,7 +68,7 @@ class EntityNewDialog extends Component {
                     </Button>
                     <Button
                         onClick={function () {
-                            this.props.entity.client.new(this.state.data, this.state.references, this.props.onSubmit);
+                            this.props.entity.client.new(this.state.data, this.state.references, this.props.dispatch);
                             this.closeAndReset();
                         }.bind(this)}
                         color="primary"
@@ -82,12 +82,12 @@ class EntityNewDialog extends Component {
 }
 
 EntityNewDialog.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
     entity: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     defaultData: PropTypes.object,
     defaultReferences: PropTypes.object,
+    dispatch: PropTypes.func.isRequired
 };
 export default EntityNewDialog;

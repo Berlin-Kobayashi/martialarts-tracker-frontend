@@ -1,11 +1,20 @@
 import React from 'react';
 import {render} from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Main from './components/main';
-import {entities} from "./const";
+import { Provider } from 'react-redux'
+import MainContainer from "./containers/mainContainer";
+import {createStore} from "redux";
+import reducer from "./reducers/reducers";
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-render(<Main entities={entities}/>, document.getElementById('app'));
+const store = createStore(reducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+render(
+    <Provider store={store}>
+        <MainContainer/>
+    </Provider>,
+    document.getElementById('app')
+);
