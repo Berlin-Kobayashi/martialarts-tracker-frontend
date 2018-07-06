@@ -1,5 +1,6 @@
 import {Actions} from "../actions";
 import {entities} from "../const";
+import _ from "lodash";
 
 let initialState = {};
 entities.map((row) => initialState[row.dialogName] = {});
