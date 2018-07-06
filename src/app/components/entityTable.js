@@ -2,10 +2,7 @@ import React, {Component} from 'react';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 import PropTypes from 'prop-types';
 import EntityNewButton from "./entityNewButton";
-import EntityNewDialog from "./dialog/entityNewDialog";
-import {entities} from "../const";
-import {connect} from "react-redux";
-import Main from "./main";
+import EntityNewDialogContainer from "../containers/entityNewDialogContainer";
 
 class EntityTable extends Component {
     constructor(props, context) {
@@ -51,8 +48,8 @@ class EntityTable extends Component {
                         )}
                     </TableBody>
                 </Table>
-                <EntityNewButton dispatch={this.props.dispatch} data={this.props.data} entity={this.props.entity}/>
-                <EntityNewDialog dispatch={this.props.dispatch} data={this.props.data} entity={this.props.entity}
+                <EntityNewButton entity={this.props.entity}/>
+                <EntityNewDialogContainer entity={this.props.entity}
                                  onClose={this.handleClose} open={this.state.open} defaultData={this.state.selected.data} defaultReferences={this.state.selected.references}/>
             </div>
         );
@@ -61,14 +58,7 @@ class EntityTable extends Component {
 
 EntityTable.propTypes = {
     entity: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-    data: state
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    dispatch: dispatch
-});
-
-export default connect(mapStateToProps,mapDispatchToProps)(EntityTable)
+export default EntityTable

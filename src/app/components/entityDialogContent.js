@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
-import Autocomplete from "../autocomplete";
-import {getIdsByNames} from "../../utils";
-import {typeDate, typeNumber, typeString} from "../../const";
+import Autocomplete from "./autocomplete";
+import {getIdsByNames} from "../utils";
+import {typeDate, typeNumber, typeString} from "../const";
 import {DialogContent} from 'material-ui/Dialog';
-import {connect} from "react-redux";
 
 class EntityDialogContent extends Component {
     constructor(props, context) {
@@ -136,16 +135,11 @@ class EntityDialogContent extends Component {
 
 EntityDialogContent.propTypes = {
     entity: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
     onDataChange: PropTypes.func.isRequired,
     onReferencesChange: PropTypes.func.isRequired,
     defaultData: PropTypes.object,
     defaultReferences: PropTypes.object,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-    data: state
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({});
-
-export default connect(mapStateToProps,mapDispatchToProps)(EntityDialogContent)
+export default EntityDialogContent

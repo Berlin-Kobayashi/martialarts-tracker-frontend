@@ -5,8 +5,8 @@ import {createMuiTheme} from 'material-ui/styles';
 import blue from 'material-ui/colors/blue';
 import AppBar from 'material-ui/AppBar';
 import PropTypes from 'prop-types';
-import EntityTable from "./entityTable";
 import {entities} from "../const";
+import EntityTableContainer from "../containers/entityTableContainer";
 
 const theme = createMuiTheme({
     palette: {
@@ -51,7 +51,7 @@ class Main extends Component {
     renderTable() {
         let entity = this.props.entities[this.state.tab];
 
-        return <EntityTable entity={entity}/>
+        return <EntityTableContainer entity={entity}/>
     }
 
     render() {
