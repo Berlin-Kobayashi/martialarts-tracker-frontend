@@ -7,7 +7,7 @@ import Exercise from "../../client/src/model/Exercise";
 import Trainingunit from "../../client/src/model/Trainingunit";
 import TrainingunitData from "../../client/src/model/TrainingunitData";
 import TrainingunitReferences from "../../client/src/model/TrainingunitReferences";
-import {addNew, getAll, update} from "./actions";
+import {addNew, getAll, update, remove} from "./actions";
 
 let client = new ApiClient();
 client.basePath = 'http://localhost:8888';
@@ -107,6 +107,17 @@ export const entities = [
                 };
 
                 api.trainingunitTrainingunitIdPut(id, trainingUnit, httpCallback)
+            },
+            "remove": function (id, dispatch) {
+                let httpCallback = function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(remove("trainingunit", id))
+                    }
+                };
+
+                api.trainingunitTrainingunitIdDelete(id, httpCallback)
             }
         }
     },
@@ -185,6 +196,17 @@ export const entities = [
                 };
 
                 api.techniqueTechniqueIdPut(id, technique, httpCallback)
+            },
+            "remove": function (id, dispatch) {
+                let httpCallback = function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(remove("technique", id))
+                    }
+                };
+
+                api.techniqueTechniqueIdDelete(id, httpCallback)
             }
         }
     },
@@ -270,6 +292,17 @@ export const entities = [
                 };
 
                 api.methodMethodIdPut(id, method, httpCallback)
+            },
+            "remove": function (id, dispatch) {
+                let httpCallback = function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(remove("method", id))
+                    }
+                };
+
+                api.methodMethodIdDelete(id, httpCallback)
             }
         }
     }, {
@@ -347,6 +380,17 @@ export const entities = [
                 };
 
                 api.exerciseExerciseIdPut(id, exercise, httpCallback)
+            },
+            "remove": function (id, dispatch) {
+                let httpCallback = function (error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(remove("exercise", id))
+                    }
+                };
+
+                api.exerciseExerciseIdDelete(id, httpCallback)
             }
         }
     },

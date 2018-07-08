@@ -36,6 +36,12 @@ export const selectEntity = entity => ({
     entity
 });
 
+export const remove = (entity, id) => ({
+    type: Actions.REMOVE,
+    entity,
+    id
+});
+
 export const Actions = {
     GET_ALL: 'GET_ALL',
     ADD: 'ADD',
@@ -44,4 +50,5 @@ export const Actions = {
     CHANGE_NEW: 'CHANGE_NEW',
     RESET_NEW: 'RESET_NEW',
     SELECT_ENTITY: 'SELECT_ENTITY',
+    REMOVE : 'REMOVE',
 };

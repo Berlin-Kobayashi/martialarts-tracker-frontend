@@ -46,6 +46,10 @@ const reducer = (state = initialState, action) => {
             state.selected.data = state.selected.entity.new();
 
             return _.cloneDeep(state);
+        case  Actions.REMOVE:
+            delete(state.data[action.entity][action.id]);
+
+            return _.cloneDeep(state);
         default:
             return state
     }
