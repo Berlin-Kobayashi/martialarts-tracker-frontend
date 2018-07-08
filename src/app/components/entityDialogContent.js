@@ -20,7 +20,7 @@ class EntityDialogContent extends Component {
                 i++;
                 let inputField = this.renderDataInputField(row.type, row.name, row.options, i, this.props.selected.data[row.name]);
 
-                return <div>{inputField}</div>;
+                return <div key={i}>{inputField}</div>;
             }
         ));
 
@@ -38,6 +38,7 @@ class EntityDialogContent extends Component {
                 );
 
                 return <Autocomplete
+                    key={i}
                     placeholder={relation.name}
                     id={relation.name}
                     options={options}
