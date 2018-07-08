@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
-import PropTypes from 'prop-types';
 import EntityNewDialogContainer from "../containers/entityNewDialogContainer";
 
 class EntityNewButton extends Component {
@@ -32,14 +31,10 @@ class EntityNewButton extends Component {
                 <Button variant="fab" color="primary" aria-label="new" onClick={this.handleOpen}>
                     <AddIcon/>
                 </Button>
-                <EntityNewDialogContainer entity={this.props.entity}
-                                          open={this.state.open} onClose={this.handleClose}/>
+                <EntityNewDialogContainer open={this.state.open} onClose={this.handleClose}/>
             </div>
         );
     }
 }
 
-EntityNewButton.propTypes = {
-    entity: PropTypes.object.isRequired,
-};
 export default EntityNewButton;

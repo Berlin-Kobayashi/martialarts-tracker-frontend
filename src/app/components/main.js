@@ -34,8 +34,9 @@ class Main extends Component {
     handleTabChange(event, value) {
         this.setState({tab: value});
 
-        let entity = this.props.entities[this.state.tab];
+        let entity = this.props.entities[value];
         entity.client.getAll(this.props.dispatch);
+        this.props.onSelectEntity(entity);
     }
 
     renderHeader() {
@@ -49,9 +50,7 @@ class Main extends Component {
     }
 
     renderTable() {
-        let entity = this.props.entities[this.state.tab];
-
-        return <EntityTableContainer entity={entity}/>
+        return <EntityTableContainer/>
     }
 
     render() {
@@ -68,7 +67,8 @@ class Main extends Component {
 
 Main.propTypes = {
     entities: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    onSelectEntity: PropTypes.func.isRequired,
 };
 
 export default Main;

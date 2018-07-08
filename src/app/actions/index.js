@@ -27,10 +27,16 @@ export const changeNew = data => ({
     data
 });
 
+export const selectEntity = entity => ({
+    type: Actions.SELECT_ENTITY,
+    entity
+});
+
 export const Actions = {
     GET_ALL: 'GET_ALL',
     ADD: 'ADD',
     UPDATE: 'UPDATE',
     OPEN_UPDATE_DIALOG: 'OPEN_UPDATE_DIALOG',
     CHANGE_NEW: 'CHANGE_NEW',
+    SELECT_ENTITY: 'SELECT_ENTITY',
 };

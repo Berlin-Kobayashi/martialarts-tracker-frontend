@@ -48,7 +48,7 @@ class EntityTable extends Component {
                         )}
                     </TableBody>
                 </Table>
-                <EntityNewButton entity={this.props.entity}/>
+                <EntityNewButton/>
                 <EntityUpdateDialogContainer onClose={this.handleClose} open={this.state.open}/>
             </div>
         );

@@ -38,6 +38,10 @@ const reducer = (state = initialState, action) => {
             state.selected.data = action.data;
 
             return _.cloneDeep(state);
+        case  Actions.SELECT_ENTITY:
+            state.selected.entity = action.entity;
+
+            return _.cloneDeep(state);
         default:
             return state
     }

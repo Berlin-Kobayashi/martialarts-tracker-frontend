@@ -4,7 +4,8 @@ import EntityTable from "../components/entityTable";
 import {openUpdateDialog} from "../actions";
 
 const mapStateToProps = (state, ownProps) => ({
-    data: state.data
+    data: state.data,
+    entity: state.selected.entity,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
