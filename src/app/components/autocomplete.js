@@ -78,7 +78,7 @@ class DownshiftMultiple extends React.Component {
         super(props, context);
 
         let selectedItem = [];
-        if(this.props.defaultValue != null){
+        if (this.props.defaultValue != null) {
             selectedItem = this.props.defaultValue;
         }
 
@@ -135,7 +135,7 @@ class DownshiftMultiple extends React.Component {
         const {classes, placeholder, id} = this.props;
         const {inputValue, selectedItem} = this.state;
 
-       let options = this.props.options.filter((elem, pos, arr) => {
+        let options = this.props.options.filter((elem, pos, arr) => {
             return arr.indexOf(elem) === pos;
         });
 

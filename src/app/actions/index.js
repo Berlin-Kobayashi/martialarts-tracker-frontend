@@ -22,7 +22,7 @@ export const openUpdateDialog = (entity, data) => ({
     data
 });
 
-export const changeNew =  data => ({
+export const changeNew = data => ({
     type: Actions.CHANGE_NEW,
     data
 });

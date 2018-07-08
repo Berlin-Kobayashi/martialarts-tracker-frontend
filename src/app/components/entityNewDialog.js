@@ -38,7 +38,7 @@ EntityNewDialog.propTypes = {
     entity: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    dispatch:PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
     data: PropTypes.object,
 };
 

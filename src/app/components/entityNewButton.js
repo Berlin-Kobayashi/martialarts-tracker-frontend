@@ -33,7 +33,7 @@ class EntityNewButton extends Component {
                     <AddIcon/>
                 </Button>
                 <EntityNewDialogContainer entity={this.props.entity}
-                                 open={this.state.open} onClose={this.handleClose}/>
+                                          open={this.state.open} onClose={this.handleClose}/>
             </div>
         );
     }

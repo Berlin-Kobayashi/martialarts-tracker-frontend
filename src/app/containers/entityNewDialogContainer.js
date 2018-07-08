@@ -11,4 +11,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch: dispatch
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(EntityNewDialog)
+export default connect(mapStateToProps, mapDispatchToProps)(EntityNewDialog)
