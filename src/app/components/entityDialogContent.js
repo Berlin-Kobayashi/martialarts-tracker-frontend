@@ -31,7 +31,7 @@ class EntityDialogContent extends Component {
                 let selectedItem = [];
                 Object.keys(this.props.data[relation.entity]).forEach((id) => {
                         options.push(this.props.data[relation.entity][id].data.name);
-                        if (this.props.selected.references[relation.name].includes(this.props.data[relation.entity][id].id)) {
+                        if (this.props.selected.references[relation.name] && this.props.selected.references[relation.name].includes(this.props.data[relation.entity][id].id)) {
                             selectedItem.push(this.props.data[relation.entity][id].data.name);
                         }
                     }
@@ -66,7 +66,7 @@ class EntityDialogContent extends Component {
                     label={name}
                     fullWidth
                     multiline={options.multiLine}
-                    value={defaultValue}
+                    defaultValue={defaultValue}
                     onChange={function (e) {
                         let newSelected = this.props.selected;
                         newSelected.data[name] = e.target.value;
@@ -97,7 +97,7 @@ class EntityDialogContent extends Component {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    value={defaultValue.slice(0, -1)}
+                    value={defaultValue ? defaultValue.slice(0, -1) : defaultValue}
                     onChange={function (e) {
                         let d = new Date(Date.parse(e.target.value));
 

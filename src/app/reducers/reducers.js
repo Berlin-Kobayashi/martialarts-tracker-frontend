@@ -2,11 +2,13 @@ import {Actions} from "../actions";
 import {entities} from "../const";
 import _ from "lodash";
 
+let initialEntity = entities[0];
+
 let initialState = {
     data: {},
     selected: {
-        entity: {},
-        data: {},
+        entity: initialEntity,
+        data: initialEntity.new(),
     },
 };
 entities.map((row) => initialState["data"][row.dialogName] = {});

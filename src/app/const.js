@@ -57,6 +57,14 @@ export const entities = [
                 "entity": "method"
             }
         ],
+        "new": function () {
+            let data = new Trainingunit();
+            data.id = "";
+            data.data = new TrainingunitData();
+            data.references = new TrainingunitReferences();
+
+            return data;
+        },
         "client": {
             "new": function (data, references, dispatch) {
                 let trainingUnit = new Trainingunit();
@@ -129,6 +137,14 @@ export const entities = [
             }
         ],
         "references": [],
+        "new": function () {
+            let data = new Technique();
+            data.id = "";
+            data.data = new ExerciseData();
+            data.references = {};
+
+            return data;
+        },
         "client": {
             "new": function (data, references, dispatch) {
                 let technique = new Technique();
@@ -204,6 +220,14 @@ export const entities = [
                 "entity": "technique"
             }
         ],
+        "new": function () {
+            let data = new Method();
+            data.id = "";
+            data.data = new ExerciseData();
+            data.references = {};
+
+            return data;
+        },
         "client": {
             "new": function (data, references, dispatch) {
                 let method = new Method();
@@ -275,6 +299,14 @@ export const entities = [
             }
         ],
         "references": [],
+        "new": function () {
+            let data = new Exercise();
+            data.id = "";
+            data.data = new ExerciseData();
+            data.references = {};
+
+            return data;
+        },
         "client": {
             "new": function (data, references, dispatch) {
                 let exercise = new Exercise();
