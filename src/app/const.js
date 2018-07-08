@@ -10,7 +10,7 @@ import TrainingunitReferences from "../../client/src/model/TrainingunitReference
 import {addNew, getAll, update, remove} from "./actions";
 
 let client = new ApiClient();
-client.basePath = 'http://localhost:8888';
+client.basePath = process.env.API;
 
 const api = new DefaultApi(client);
 
