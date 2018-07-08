@@ -10,7 +10,6 @@ class EntityTable extends Component {
 
         this.state = {
             open: false,
-            selected: {}
         };
 
         this.handleClose = this.handleClose.bind(this);
@@ -36,21 +35,21 @@ class EntityTable extends Component {
                     <TableBody>
                         {Object.keys(this.props.data[this.props.entity.dialogName]).map((id, i) =>
                             <TableRow onClick={function () {
+                                this.props.onRowClick(this.props.entity, this.props.data[this.props.entity.dialogName][id]);
                                 this.setState({
                                     open: true,
-                                    selected: this.props.data[this.props.entity.dialogName][id]
                                 });
                             }.bind(this)} key={i} hover>
                                 {this.props.entity.columns.map((column, i) =>
-                                    <TableCell key={i}>{this.props.data[this.props.entity.dialogName][id].data[column]}</TableCell>
+                                    <TableCell
+                                        key={i}>{this.props.data[this.props.entity.dialogName][id].data[column]}</TableCell>
                                 )}
                             </TableRow>
                         )}
                     </TableBody>
                 </Table>
                 <EntityNewButton entity={this.props.entity}/>
-                <EntityUpdateDialogContainer id={this.state.selected.id} entity={this.props.entity}
-                                 onClose={this.handleClose} open={this.state.open} defaultData={this.state.selected.data} defaultReferences={this.state.selected.references}/>
+                <EntityUpdateDialogContainer onClose={this.handleClose} open={this.state.open}/>
             </div>
         );
     }
@@ -59,6 +58,7 @@ class EntityTable extends Component {
 EntityTable.propTypes = {
     entity: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
+    onRowClick: PropTypes.func.isRequired,
 };
 
 export default EntityTable
