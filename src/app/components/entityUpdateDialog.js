@@ -33,6 +33,7 @@ class EntityUpdateDialog extends Component {
                             this.props.entity.client.remove(this.props.data.id, this.props.dispatch);
                             this.props.onClose();
                         }.bind(this)}
+                        color="secondary"
                     >
                         Delete
                     </Button>

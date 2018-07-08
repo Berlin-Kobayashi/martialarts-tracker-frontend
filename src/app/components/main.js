@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Tabs, {Tab} from 'material-ui/Tabs';
 import {createMuiTheme} from 'material-ui/styles';
-import blue from 'material-ui/colors/blue';
+import {blue, red} from 'material-ui/colors';
 import AppBar from 'material-ui/AppBar';
 import PropTypes from 'prop-types';
 import {entities} from "../const";
@@ -11,6 +11,7 @@ import EntityTableContainer from "../containers/entityTableContainer";
 const theme = createMuiTheme({
     palette: {
         primary: blue,
+        secondary: red,
     },
 });
 
