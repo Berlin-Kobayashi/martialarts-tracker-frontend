@@ -7,7 +7,7 @@ import Exercise from "../../client/src/model/Exercise";
 import Trainingunit from "../../client/src/model/Trainingunit";
 import TrainingunitData from "../../client/src/model/TrainingunitData";
 import TrainingunitReferences from "../../client/src/model/TrainingunitReferences";
-import {addNew, getAll} from "./actions";
+import {addNew, getAll, update} from "./actions";
 
 let client = new ApiClient();
 client.basePath = 'http://localhost:8888';
@@ -83,6 +83,22 @@ export const entities = [
                 };
 
                 api.trainingunitGet(httpCallback);
+            },
+            "update": function (id, data, references, dispatch) {
+                let trainingUnit = new Trainingunit();
+                trainingUnit.id = id;
+                trainingUnit.data = TrainingunitData.constructFromObject(data);
+                trainingUnit.references = TrainingunitReferences.constructFromObject(references);
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(update("trainingunit", data))
+                    }
+                };
+
+                api.trainingunitTrainingunitIdPut(id, trainingUnit, httpCallback)
             }
         }
     },
@@ -138,6 +154,21 @@ export const entities = [
                 };
 
                 api.techniqueGet(httpCallback);
+            },
+            "update": function (id, data, references, dispatch) {
+                let technique = new Technique();
+                technique.id = id;
+                technique.data = ExerciseData.constructFromObject(data);
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(update("technique", data))
+                    }
+                };
+
+                api.techniqueTechniqueIdPut(id, technique, httpCallback)
             }
         }
     },
@@ -199,6 +230,22 @@ export const entities = [
                 };
 
                 api.methodGet(httpCallback);
+            },
+            "update": function (id, data, references, dispatch) {
+                let method = new Method();
+                method.id = id;
+                method.data = ExerciseData.constructFromObject(data);
+                method.references = MethodReferences.constructFromObject(references);
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(update("method", data))
+                    }
+                };
+
+                api.methodMethodIdPut(id, method, httpCallback)
             }
         }
     }, {
@@ -253,6 +300,21 @@ export const entities = [
                 };
 
                 api.exerciseGet(httpCallback);
+            },
+            "update": function (id, data, references, dispatch) {
+                let exercise = new Exercise();
+                exercise.id = id;
+                exercise.data = ExerciseData.constructFromObject(data);
+
+                let httpCallback = function (error, data) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        dispatch(update("exercise", data))
+                    }
+                };
+
+                api.exerciseExerciseIdPut(id, exercise, httpCallback)
             }
         }
     },

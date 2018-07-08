@@ -4,7 +4,7 @@ import Button from 'material-ui/Button';
 import PropTypes from 'prop-types';
 import EntityDialogContentContainer from "../containers/entityDialogContentContainer";
 
-class EntityNewDialog extends Component {
+class EntityUpdateDialog extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -54,10 +54,10 @@ class EntityNewDialog extends Component {
             <Dialog
                 open={this.props.open}
                 onClose={this.closeAndReset}
-                aria-labelledby="new-dialog-title"
+                aria-labelledby="update-dialog-title"
                 fullScreen
             >
-                <DialogTitle id="new-dialog-title">{"New " + this.props.entity.dialogName}</DialogTitle>
+                <DialogTitle id="update-dialog-title">{"Update " + this.props.entity.dialogName}</DialogTitle>
                 <EntityDialogContentContainer entity={this.props.entity} onDataChange={this.onDataChange}
                                               onReferencesChange={this.onReferencesChange}
                                               defaultReferences={this.props.defaultReferences}
@@ -68,7 +68,7 @@ class EntityNewDialog extends Component {
                     </Button>
                     <Button
                         onClick={function () {
-                            this.props.entity.client.new(this.state.data, this.state.references, this.props.dispatch);
+                            this.props.entity.client.update(this.props.id, this.state.data, this.state.references, this.props.dispatch);
                             this.closeAndReset();
                         }.bind(this)}
                         color="primary"
@@ -81,13 +81,14 @@ class EntityNewDialog extends Component {
     }
 }
 
-EntityNewDialog.propTypes = {
+EntityUpdateDialog.propTypes = {
     entity: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    dispatch:PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
     defaultData: PropTypes.object,
     defaultReferences: PropTypes.object,
+    id: PropTypes.string
 };
 
-export default EntityNewDialog
+export default EntityUpdateDialog
