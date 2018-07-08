@@ -27,6 +27,10 @@ export const changeNew = data => ({
     data
 });
 
+export const resetNew = () => ({
+    type: Actions.RESET_NEW
+});
+
 export const selectEntity = entity => ({
     type: Actions.SELECT_ENTITY,
     entity
@@ -38,5 +42,6 @@ export const Actions = {
     UPDATE: 'UPDATE',
     OPEN_UPDATE_DIALOG: 'OPEN_UPDATE_DIALOG',
     CHANGE_NEW: 'CHANGE_NEW',
+    RESET_NEW: 'RESET_NEW',
     SELECT_ENTITY: 'SELECT_ENTITY',
 };

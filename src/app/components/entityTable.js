@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Table, {TableBody, TableCell, TableHead, TableRow} from 'material-ui/Table';
 import PropTypes from 'prop-types';
-import EntityNewButton from "./entityNewButton";
+import EntityNewButtonContainer from "../containers/entityNewButtonContainer";
 import EntityUpdateDialogContainer from "../containers/entityUpdateDialogContainer";
 
 class EntityTable extends Component {
@@ -48,7 +48,7 @@ class EntityTable extends Component {
                         )}
                     </TableBody>
                 </Table>
-                <EntityNewButton/>
+                <EntityNewButtonContainer/>
                 <EntityUpdateDialogContainer onClose={this.handleClose} open={this.state.open}/>
             </div>
         );

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import EntityNewDialogContainer from "../containers/entityNewDialogContainer";
+import EntityNewDialog from "./entityNewDialog";
+import PropTypes from 'prop-types';
 
 class EntityNewButton extends Component {
     constructor(props, context) {
@@ -17,6 +19,7 @@ class EntityNewButton extends Component {
 
     handleOpen() {
         this.setState({open: true});
+        this.props.onClick();
     }
 
     handleClose() {
@@ -36,5 +39,9 @@ class EntityNewButton extends Component {
         );
     }
 }
+
+EntityNewDialog.propTypes = {
+    onClick: PropTypes.func.isRequired,
+};
 
 export default EntityNewButton;
