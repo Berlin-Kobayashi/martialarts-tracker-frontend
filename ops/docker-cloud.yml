@@ -15,6 +15,7 @@ services:
       - 81:80
     environment:
       - "DB=ma-tracker.jsonmancer.com:27017"
+      - "TOKEN"
   db:
     image: mongo:3.6
     volumes:

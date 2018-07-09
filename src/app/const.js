@@ -7,10 +7,11 @@ import Exercise from "../../client/src/model/Exercise";
 import Trainingunit from "../../client/src/model/Trainingunit";
 import TrainingunitData from "../../client/src/model/TrainingunitData";
 import TrainingunitReferences from "../../client/src/model/TrainingunitReferences";
-import {addNew, getAll, update, remove} from "./actions";
+import {addNew, getAll, remove, update} from "./actions";
 
 let client = new ApiClient();
 client.basePath = process.env.API;
+client.defaultHeaders = {"Authorization" : process.env.TOKEN};
 
 const api = new DefaultApi(client);
 

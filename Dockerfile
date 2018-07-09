@@ -1,6 +1,7 @@
 FROM node:8.11 as build
 
 ARG API
+ARG TOKEN
 
 WORKDIR /usr/src/app/
 

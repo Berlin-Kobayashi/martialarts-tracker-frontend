@@ -31,7 +31,8 @@ const config = {
             {from: 'www'},
         ], path.resolve(__dirname, 'src')),
         new webpack.EnvironmentPlugin({
-            "API" : "http://localhost:8888"
+            "API" : "http://localhost:8888",
+            "TOKEN" : ""
         })
     ],
     module: {
