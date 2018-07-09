@@ -14,7 +14,7 @@ services:
     ports:
       - 81:80
     environment:
-      - "DB=jsonmancer.com:27017"
+      - "DB=ma-tracker.jsonmancer.com:27017"
   db:
     image: mongo:3.6
     volumes:
