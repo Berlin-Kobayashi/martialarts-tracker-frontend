@@ -88,7 +88,7 @@ api.exerciseExerciseIdDelete(exerciseId, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://martialartstracker_api_1*
+All URIs are relative to *https://martialarts-tracker_api_1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

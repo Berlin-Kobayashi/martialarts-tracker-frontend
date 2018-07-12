@@ -1,6 +1,6 @@
 # MartialartsTracker.DefaultApi
 
-All URIs are relative to *https://martialartstracker_api_1*
+All URIs are relative to *https://martialarts-tracker_api_1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

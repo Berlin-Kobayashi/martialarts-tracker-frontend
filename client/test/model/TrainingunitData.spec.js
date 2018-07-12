@@ -54,8 +54,8 @@
       //expect(instance).to.be.a(MartialartsTracker.TrainingunitData);
     });
 
-    it('should have the property end (base name: "end")', function() {
-      // uncomment below and update the code to test the property end
+    it('should have the property minutes (base name: "minutes")', function() {
+      // uncomment below and update the code to test the property minutes
       //var instane = new MartialartsTracker.TrainingunitData();
       //expect(instance).to.be();
     });

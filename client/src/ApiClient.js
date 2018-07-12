@@ -32,9 +32,9 @@ export default class ApiClient {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://martialartstracker_api_1
+         * @default https://martialarts-tracker_api_1
          */
-        this.basePath = 'https://martialartstracker_api_1'.replace(/\/+$/, '');
+        this.basePath = 'https://martialarts-tracker_api_1'.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.
@@ -486,7 +486,7 @@ export default class ApiClient {
     * @returns {Date} The parsed date object.
     */
     static parseDate(str) {
-        return new Date(str.replace(/T/i, ' '));
+        return new Date(str);
     }
 
     /**
