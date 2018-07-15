@@ -1,4 +1,5 @@
 node_modules
 build
+apps
 .idea
 /ops/nginx/etc/nginx/conf.d/.htpasswd
