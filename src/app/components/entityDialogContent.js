@@ -3,8 +3,10 @@ import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
 import Autocomplete from "./autocomplete";
 import {getIdsByNames} from "../utils";
-import {typeDate, typeNumber, typeString} from "../const";
+import {typeDate, typeEnum, typeNumber, typeString} from "../const";
 import {DialogContent} from 'material-ui/Dialog';
+import Select from 'material-ui/Select';
+import MenuItem from 'material-ui/Menu/MenuItem';
 
 class EntityDialogContent extends Component {
     constructor(props, context) {
@@ -107,6 +109,23 @@ class EntityDialogContent extends Component {
                         this.props.onChange(newSelected);
                     }.bind(this)}
                 />;
+            case typeEnum :
+                return <Select
+                    key={i}
+                    margin="dense"
+                    id={name}
+                    label={name}
+                    value={defaultValue ? defaultValue : ""}
+                    onChange={function (e) {
+                        let newSelected = this.props.selected;
+                        newSelected.data[name] = e.target.value;
+                        this.props.onChange(newSelected);
+                    }.bind(this)}
+                >
+                    {options.values.map((row, i) =>
+                        <MenuItem key={i} value={row}>{row}</MenuItem>
+                    )}
+                </Select>;
         }
     }
 }

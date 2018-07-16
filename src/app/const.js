@@ -18,6 +18,7 @@ const api = new DefaultApi(client);
 export const typeString = "string";
 export const typeNumber = "number";
 export const typeDate = "date";
+export const typeEnum = "enum";
 
 export const entities = [
     {
@@ -137,8 +138,18 @@ export const entities = [
             },
             {
                 "name": "kind",
-                "type": typeString,
-                "options": {}
+                "type": typeEnum,
+                "options": {
+                    "values" : [
+                        "Kick",
+                        "Punch",
+                        "Trap",
+                        "Grapple",
+                        "Infight",
+                        "Posture",
+                        "Footwork"
+                    ]
+                }
             },
             {
                 "name": "description",
@@ -226,8 +237,15 @@ export const entities = [
             },
             {
                 "name": "kind",
-                "type": typeString,
-                "options": {}
+                "type": typeEnum,
+                "options": {
+                    "values" : [
+                        "Pad drill",
+                        "Cycle drill",
+                        "Pair drill",
+                        "Heavy bag drill"
+                    ]
+                }
             },
             {
                 "name": "description",
@@ -321,8 +339,13 @@ export const entities = [
             },
             {
                 "name": "kind",
-                "type": typeString,
-                "options": {}
+                "type": typeEnum,
+                "options": {
+                    "values" : [
+                        "Sparring",
+                        "Warm-up"
+                    ]
+                }
             },
             {
                 "name": "description",
