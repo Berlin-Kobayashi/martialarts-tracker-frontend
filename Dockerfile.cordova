@@ -39,7 +39,7 @@ RUN dpkg --add-architecture i386 && \
  apt-get autoremove -y && \
  apt-get clean
 
-RUN cordova create /usr/src/cordova
+RUN cordova create /usr/src/cordova com.danshu93.matracker ma-tracker
 
 WORKDIR /usr/src/cordova/
 
@@ -48,6 +48,6 @@ RUN rm -rf ./www/*
 COPY --from=build /usr/src/app/build ./www
 
 RUN (while sleep 3; do echo "y"; done) | android update sdk --no-ui --filter build-tools-24.0.0,android-24,extra-android-m2repository
-RUN cordova platform add android@6.0
+RUN cordova platform add "android@6.0"
 
 CMD cordova build
